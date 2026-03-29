@@ -26,6 +26,7 @@ import AdminJobs from './pages/admin/AdminJobs';
 import AdminMessages from './pages/admin/AdminMessages';
 import AdminApplications from './pages/admin/AdminApplications';
 import AdminReferrals from './pages/admin/AdminReferrals';
+import AdminSettings from './pages/admin/AdminSettings';
 
 function Layout({ children }) {
   const location = useLocation();
@@ -98,6 +99,7 @@ export default function App() {
               <Route path="applications" element={<AdminApplications />} />
               <Route path="referrals" element={<AdminReferrals />} />
               <Route path="messages" element={<AdminMessages />} />
+              <Route path="settings" element={<AdminSettings />} />
             </Route>
 
             <Route path="*" element={<NotFoundPage />} />

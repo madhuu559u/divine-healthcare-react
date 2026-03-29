@@ -114,27 +114,47 @@ export default function Step9_Review() {
 
       // Upload documents to Supabase Storage and insert records
       const docFiles = store.documentFiles || {};
+      const docMeta = store.documents || {};
+      let uploadCount = 0;
       for (const [docType, file] of Object.entries(docFiles)) {
-        if (!file || !(file instanceof File)) continue;
-        const filePath = `${applicationId}/${docType}_${file.name}`;
-        const { error: uploadError } = await supabase.storage
-          .from('documents')
-          .upload(filePath, file, { upsert: true });
+        if (!file) continue;
+        // File objects may lose instanceof check across Zustand — check for name and size instead
+        const hasFileData = file instanceof File || file instanceof Blob || (file.name && file.size);
+        if (!hasFileData) { console.warn(`Skipping ${docType}: not a valid file`); continue; }
 
-        if (uploadError) {
-          console.error(`Error uploading ${docType}:`, uploadError);
-          continue; // Don't fail the whole submission for one doc
+        const fileName = file.name || `${docType}_upload`;
+        const filePath = `${applicationId}/${docType}_${fileName}`;
+        try {
+          const { error: uploadError } = await supabase.storage
+            .from('documents')
+            .upload(filePath, file, { upsert: true });
+
+          if (uploadError) {
+            console.error(`Error uploading ${docType}:`, uploadError);
+            toast.error(`Failed to upload ${docType}: ${uploadError.message}`);
+            continue;
+          }
+
+          // Insert document record
+          const { error: docRecordError } = await supabase.from('documents').insert({
+            application_id: applicationId,
+            doc_type: docType,
+            file_name: fileName,
+            storage_path: filePath,
+            file_size: file.size || 0,
+            mime_type: file.type || 'application/octet-stream',
+          });
+          if (docRecordError) {
+            console.error(`Error saving ${docType} record:`, docRecordError);
+          } else {
+            uploadCount++;
+          }
+        } catch (uploadErr) {
+          console.error(`Upload exception for ${docType}:`, uploadErr);
         }
-
-        // Insert document record
-        await supabase.from('documents').insert({
-          application_id: applicationId,
-          doc_type: docType,
-          file_name: file.name,
-          storage_path: filePath,
-          file_size: file.size,
-          mime_type: file.type,
-        });
+      }
+      if (Object.keys(docFiles).length > 0) {
+        toast.success(`${uploadCount} document(s) uploaded successfully`);
       }
 
       setRefNumber(generatedRef);
