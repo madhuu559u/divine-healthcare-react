@@ -17,12 +17,22 @@ import JobApplicationPage from './pages/JobApplicationPage';
 import MedicaidPage from './pages/MedicaidPage';
 import ReferralsPage from './pages/ReferralsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import { AuthProvider } from './lib/AuthContext';
+import ProtectedRoute from './components/admin/ProtectedRoute';
+import AdminLayout from './components/admin/AdminLayout';
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminJobs from './pages/admin/AdminJobs';
+import AdminMessages from './pages/admin/AdminMessages';
+import AdminApplications from './pages/admin/AdminApplications';
+import AdminReferrals from './pages/admin/AdminReferrals';
 
 function Layout({ children }) {
   const location = useLocation();
   const isApplicationPage = location.pathname.includes('/careers/apply');
+  const isAdminPage = location.pathname.startsWith('/admin');
 
-  if (isApplicationPage) return <>{children}</>;
+  if (isApplicationPage || isAdminPage) return <>{children}</>;
 
   return (
     <>
@@ -57,26 +67,46 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Preloader />
-      <div className="blob blob-1" />
-      <div className="blob blob-2" />
-      <ScrollToTop />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/careers" element={<CareersPage />} />
-          <Route path="/careers/apply" element={<JobApplicationPage />} />
-          <Route path="/medicaid" element={<MedicaidPage />} />
-          <Route path="/referrals" element={<ReferralsPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Layout>
-      <WhatsAppButton />
-      <ThemeSwitcher />
-      <Toaster position="top-right" toastOptions={{ style: { background: 'var(--white)', color: 'var(--text-main)', borderRadius: '12px' } }} />
+      <AuthProvider>
+        <Preloader />
+        <div className="blob blob-1" />
+        <div className="blob blob-2" />
+        <ScrollToTop />
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/careers/apply" element={<JobApplicationPage />} />
+            <Route path="/medicaid" element={<MedicaidPage />} />
+            <Route path="/referrals" element={<ReferralsPage />} />
+
+            {/* Admin routes */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<AdminDashboard />} />
+              <Route path="jobs" element={<AdminJobs />} />
+              <Route path="applications" element={<AdminApplications />} />
+              <Route path="referrals" element={<AdminReferrals />} />
+              <Route path="messages" element={<AdminMessages />} />
+            </Route>
+
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Layout>
+        <WhatsAppButton />
+        <ThemeSwitcher />
+        <Toaster position="top-right" toastOptions={{ style: { background: 'var(--white)', color: 'var(--text-main)', borderRadius: '12px' } }} />
+      </AuthProvider>
     </BrowserRouter>
   );
 }

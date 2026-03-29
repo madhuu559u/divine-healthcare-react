@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { CheckCircle, Home, Briefcase } from 'lucide-react';
 import Button from '../../shared/Button';
 
-export default function SubmissionSuccess({ name, email }) {
-  const refNumber = `DHH-${Date.now().toString().slice(-8)}`;
+export default function SubmissionSuccess({ name, email, refNumber: passedRef }) {
+  const refNumber = passedRef || `DHH-${Date.now().toString().slice(-8)}`;
 
   return (
     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="max-w-xl mx-auto text-center py-12">

@@ -9,6 +9,7 @@ import AnimatedSection from '../shared/AnimatedSection';
 import Button from '../shared/Button';
 import Card from '../shared/Card';
 import { COMPANY } from '../../utils/constants';
+import { supabase } from '../../lib/supabase';
 
 const schema = z.object({
   referrerName: z.string().min(2, 'Name is required'),
@@ -47,11 +48,35 @@ export default function ReferralForm() {
   const [submitted, setSubmitted] = useState(false);
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm({ resolver: zodResolver(schema) });
 
-  const onSubmit = async () => {
-    await new Promise(r => setTimeout(r, 1500));
-    toast.success('Referral submitted successfully!');
-    setSubmitted(true);
-    reset();
+  const onSubmit = async (data) => {
+    try {
+      const { error } = await supabase.from('referrals').insert({
+        referrer_name: data.referrerName,
+        referrer_org: data.referrerOrg,
+        referrer_title: data.referrerTitle || null,
+        referrer_phone: data.referrerPhone,
+        referrer_email: data.referrerEmail,
+        referrer_fax: data.referrerFax || null,
+        patient_name: data.patientName,
+        patient_dob: data.patientDob,
+        patient_address: data.patientAddress,
+        patient_phone: data.patientPhone,
+        insurance_type: data.insuranceType,
+        medicaid_id: data.medicaidId || null,
+        service_requested: data.serviceRequested,
+        start_date: data.startDate || null,
+        urgency: data.urgency,
+        clinical_notes: data.clinicalNotes || null,
+        preferred_schedule: data.preferredSchedule || null,
+      });
+      if (error) throw error;
+      toast.success('Referral submitted successfully!');
+      setSubmitted(true);
+      reset();
+    } catch (err) {
+      console.error('Referral submission error:', err);
+      toast.error('Something went wrong. Please try again or call us directly.');
+    }
   };
 
   const inputCls = 'w-full px-4 py-3 rounded-xl border text-sm outline-none';

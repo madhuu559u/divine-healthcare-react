@@ -12,6 +12,8 @@ const schema = z.object({
   lastName: z.string().min(1, 'Last name is required'),
   preferredName: z.string().optional(),
   dob: z.string().min(1, 'Date of birth is required'),
+  ssnLast4: z.string().optional().refine(val => !val || /^\d{4}$/.test(val), { message: 'Must be exactly 4 digits' }),
+  formerNames: z.string().optional(),
   street: z.string().min(1, 'Street address is required'),
   city: z.string().min(1, 'City is required'),
   state: z.string().min(1, 'State is required'),
@@ -20,6 +22,8 @@ const schema = z.object({
   homePhone: z.string().optional(),
   cellPhone: z.string().min(10, 'Cell phone is required'),
   email: z.string().email('Valid email is required'),
+  driversLicenseNumber: z.string().optional(),
+  driversLicenseState: z.string().optional(),
   isOver18: z.string().min(1, 'Required'),
   isCitizen: z.string().min(1, 'Required'),
   isEligible: z.string().optional(),
@@ -82,6 +86,18 @@ export default function Step1_PersonalInfo() {
           </div>
         </div>
 
+        <div className="grid sm:grid-cols-3 gap-4">
+          <div>
+            <label className={labelCls} style={labelStyle}>Last 4 of SSN</label>
+            <input {...register('ssnLast4')} className={inputCls} style={inputStyle} placeholder="1234" maxLength={4} inputMode="numeric" />
+            {errors.ssnLast4 && <p className="text-red-500 text-xs mt-1">{errors.ssnLast4.message}</p>}
+          </div>
+          <div className="sm:col-span-2">
+            <label className={labelCls} style={labelStyle}>Former Names</label>
+            <input {...register('formerNames')} className={inputCls} style={inputStyle} placeholder="Any previous names used" />
+          </div>
+        </div>
+
         <div>
           <label className={labelCls} style={labelStyle}>Street Address *</label>
           <input {...register('street')} className={inputCls} style={inputStyle} placeholder="123 Main St" />
@@ -135,6 +151,20 @@ export default function Step1_PersonalInfo() {
             <label className={labelCls} style={labelStyle}>Email *</label>
             <input {...register('email')} type="email" className={inputCls} style={inputStyle} placeholder="you@email.com" />
             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label className={labelCls} style={labelStyle}>Driver's License Number</label>
+            <input {...register('driversLicenseNumber')} className={inputCls} style={inputStyle} placeholder="License number" />
+          </div>
+          <div>
+            <label className={labelCls} style={labelStyle}>Driver's License State</label>
+            <select {...register('driversLicenseState')} className={inputCls} style={inputStyle}>
+              <option value="">Select state</option>
+              {US_STATES.map(s => <option key={s} value={s}>{s}</option>)}
+            </select>
           </div>
         </div>
 

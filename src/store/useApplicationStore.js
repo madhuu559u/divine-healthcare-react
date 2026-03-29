@@ -9,7 +9,8 @@ const useApplicationStore = create((set, get) => ({
     firstName: '', middleName: '', lastName: '', preferredName: '',
     dob: '', street: '', city: '', state: '', zip: '',
     gender: '', homePhone: '', cellPhone: '', email: '',
-    isOver18: '', isCitizen: '', isEligible: '', hearAboutUs: ''
+    isOver18: '', isCitizen: '', isEligible: '', hearAboutUs: '',
+    ssnLast4: '', formerNames: '', driversLicenseNumber: '', driversLicenseState: ''
   },
 
   employmentDesired: {
@@ -43,6 +44,7 @@ const useApplicationStore = create((set, get) => ({
   ],
 
   documents: {},
+  documentFiles: {},
 
   agreements: {
     backgroundCheck: false, backgroundSignature: '',
@@ -66,11 +68,12 @@ const useApplicationStore = create((set, get) => ({
   updateSkillsAssessment: (data) => set((s) => ({ skillsAssessment: { ...s.skillsAssessment, ...data } })),
   updateReferences: (data) => set({ references: data }),
   updateDocuments: (data) => set((s) => ({ documents: { ...s.documents, ...data } })),
+  updateDocumentFiles: (data) => set((s) => ({ documentFiles: { ...s.documentFiles, ...data } })),
   updateAgreements: (data) => set((s) => ({ agreements: { ...s.agreements, ...data } })),
 
   resetApplication: () => set({
     currentStep: 1, selectedJob: null,
-    personalInfo: { firstName: '', middleName: '', lastName: '', preferredName: '', dob: '', street: '', city: '', state: '', zip: '', gender: '', homePhone: '', cellPhone: '', email: '', isOver18: '', isCitizen: '', isEligible: '', hearAboutUs: '' },
+    personalInfo: { firstName: '', middleName: '', lastName: '', preferredName: '', dob: '', street: '', city: '', state: '', zip: '', gender: '', homePhone: '', cellPhone: '', email: '', isOver18: '', isCitizen: '', isEligible: '', hearAboutUs: '', ssnLast4: '', formerNames: '', driversLicenseNumber: '', driversLicenseState: '' },
     employmentDesired: { position: '', startDate: '', desiredPay: '', employmentType: [], preferredShift: [], previouslyEmployed: '', previousDates: '' },
     employmentHistory: { employers: [{ name: '', mayContact: '', city: '', state: '', zip: '', title: '', supervisor: '', supervisorTitle: '', dateFrom: '', dateTo: '', phone: '', workPerformed: '', reasonLeaving: '' }], convicted: '', convictedExplanation: '', excludedMedicaid: '', excludedExplanation: '', disciplined: '', disciplinedExplanation: '' },
     education: [{ level: '', schoolName: '', yearsAttended: '', state: '', degreeNumber: '' }],
@@ -78,6 +81,7 @@ const useApplicationStore = create((set, get) => ({
     skillsAssessment: {},
     references: [{ name: '', phone: '', bestTime: '' }, { name: '', phone: '', bestTime: '' }],
     documents: {},
+    documentFiles: {},
     agreements: { backgroundCheck: false, backgroundSignature: '', confidentiality: false, confidentialitySignature: '', substanceAbuse: false, substanceAbuseSignature: '', certification: false, certificationSignature: '', atWill: false }
   })
 }));

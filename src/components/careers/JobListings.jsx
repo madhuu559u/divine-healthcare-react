@@ -1,22 +1,51 @@
-import { useState } from 'react';
-import { Search, Filter, Briefcase } from 'lucide-react';
-import { jobs } from '../../data/jobs';
+import { useState, useEffect } from 'react';
+import { Search, Filter, Briefcase, Loader2 } from 'lucide-react';
+import { supabase } from '../../lib/supabase';
+import { jobs as fallbackJobs } from '../../data/jobs';
 import JobCard from './JobCard';
 import JobDetailModal from './JobDetailModal';
 import SectionHeader from '../shared/SectionHeader';
 import AnimatedSection from '../shared/AnimatedSection';
 
 export default function JobListings() {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [selectedJob, setSelectedJob] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [typeFilter, setTypeFilter] = useState('All');
+
+  useEffect(() => {
+    async function fetchJobs() {
+      try {
+        const { data, error } = await supabase
+          .from('jobs')
+          .select('*')
+          .eq('is_active', true)
+          .order('created_at', { ascending: false });
+        if (error) throw error;
+        // Map snake_case DB columns to camelCase for JobCard/JobDetailModal
+        const mapped = (data || []).map(j => ({
+          ...j,
+          fullTitle: j.full_title || j.fullTitle || j.title,
+          // types, shifts, requirements, responsibilities come as JSONB arrays automatically
+        }));
+        setJobs(mapped.length > 0 ? mapped : fallbackJobs);
+      } catch (err) {
+        console.error('Error fetching jobs:', err);
+        setJobs(fallbackJobs);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchJobs();
+  }, []);
 
   const categories = ['All', ...new Set(jobs.map(j => j.category))];
   const types = ['All', 'Full-Time', 'Part-Time', 'PRN'];
 
   const filtered = jobs.filter(j => {
     if (categoryFilter !== 'All' && j.category !== categoryFilter) return false;
-    if (typeFilter !== 'All' && !j.types.includes(typeFilter)) return false;
+    if (typeFilter !== 'All' && !j.types?.includes(typeFilter)) return false;
     return true;
   });
 
@@ -50,7 +79,12 @@ export default function JobListings() {
           </div>
         </AnimatedSection>
 
-        {filtered.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-16">
+            <Loader2 size={36} className="mx-auto mb-4 animate-spin" style={{ color: 'var(--primary)' }} />
+            <p className="text-sm" style={{ color: 'var(--text-light-color)' }}>Loading positions...</p>
+          </div>
+        ) : filtered.length === 0 ? (
           <div className="text-center py-16">
             <Briefcase size={48} className="mx-auto mb-4 opacity-30" />
             <p className="text-lg font-medium" style={{ color: 'var(--text-light-color)' }}>No positions match your filters</p>

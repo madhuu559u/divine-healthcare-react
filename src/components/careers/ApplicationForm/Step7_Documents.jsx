@@ -18,22 +18,26 @@ const docTypes = [
 ];
 
 export default function Step7_Documents() {
-  const { documents, updateDocuments, nextStep, prevStep } = useApplicationStore();
+  const { documents, updateDocuments, updateDocumentFiles, nextStep, prevStep } = useApplicationStore();
   const [localDocs, setLocalDocs] = useState(documents);
+  const [localFiles, setLocalFiles] = useState({});
 
   const handleFile = (key, e) => {
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.size > 10 * 1024 * 1024) { alert('File must be under 10MB'); return; }
     setLocalDocs(prev => ({ ...prev, [key]: { name: file.name, size: file.size, type: file.type } }));
+    setLocalFiles(prev => ({ ...prev, [key]: file }));
   };
 
   const removeFile = (key) => {
     setLocalDocs(prev => { const n = { ...prev }; delete n[key]; return n; });
+    setLocalFiles(prev => { const n = { ...prev }; delete n[key]; return n; });
   };
 
   const handleContinue = () => {
     updateDocuments(localDocs);
+    updateDocumentFiles(localFiles);
     nextStep();
   };
 
@@ -44,7 +48,7 @@ export default function Step7_Documents() {
         <p className="text-sm" style={{ color: 'var(--text-light-color)' }}>Upload required documents. Accepted formats: PDF, JPG, PNG (max 10MB each).</p>
         <div className="flex items-start gap-2 mt-3 p-3 rounded-xl text-sm" style={{ background: 'var(--accent-light)', color: 'var(--primary-dark)' }}>
           <AlertCircle size={16} className="mt-0.5 shrink-0" />
-          <span>Document uploads will be fully processed when the backend is connected. For now, files are captured locally for review.</span>
+          <span>Documents will be securely uploaded when you submit your application in the final step.</span>
         </div>
       </div>
 

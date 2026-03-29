@@ -5,6 +5,7 @@ import { Send } from 'lucide-react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import Button from '../shared/Button';
+import { supabase } from '../../lib/supabase';
 
 const schema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -21,10 +22,22 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (data) => {
-    await new Promise((r) => setTimeout(r, 1000));
-    toast.success('Message sent successfully! We\'ll be in touch soon.');
-    setSubmitted(true);
-    reset();
+    try {
+      const { error } = await supabase.from('contact_submissions').insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        service: data.service || null,
+        message: data.message,
+      });
+      if (error) throw error;
+      toast.success('Message sent successfully! We\'ll be in touch soon.');
+      setSubmitted(true);
+      reset();
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      toast.error('Something went wrong. Please try again or call us directly.');
+    }
   };
 
   if (submitted) {

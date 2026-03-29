@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Edit2, CheckCircle, FileText, Send } from 'lucide-react';
+import toast from 'react-hot-toast';
 import useApplicationStore from '../../../store/useApplicationStore';
+import { supabase } from '../../../lib/supabase';
 import Button from '../../shared/Button';
 import SubmissionSuccess from './SubmissionSuccess';
 
@@ -48,14 +50,104 @@ export default function Step9_Review() {
   const e = store.employmentDesired;
   const h = store.employmentHistory;
 
+  const [refNumber, setRefNumber] = useState('');
+
   const handleSubmit = async () => {
     setSubmitting(true);
-    await new Promise(r => setTimeout(r, 2000));
-    setSubmitting(false);
-    setSubmitted(true);
+    try {
+      const generatedRef = `DHH-${Date.now().toString().slice(-8)}`;
+
+      // Insert application into Supabase
+      const { data: appData, error: appError } = await supabase.from('applications').insert({
+        reference_number: generatedRef,
+        job_id: store.selectedJob?.id || null,
+        status: 'new',
+        // Personal Info
+        first_name: p.firstName,
+        middle_name: p.middleName || null,
+        last_name: p.lastName,
+        preferred_name: p.preferredName || null,
+        date_of_birth: p.dob || null,
+        street: p.street,
+        city: p.city,
+        state: p.state,
+        zip: p.zip,
+        gender: p.gender || null,
+        home_phone: p.homePhone || null,
+        cell_phone: p.cellPhone,
+        email: p.email,
+        is_over_18: p.isOver18 || null,
+        is_citizen: p.isCitizen || null,
+        is_eligible: p.isEligible || null,
+        hear_about_us: p.hearAboutUs || null,
+        ssn_last4: p.ssnLast4 || null,
+        former_names: p.formerNames || null,
+        drivers_license_number: p.driversLicenseNumber || null,
+        drivers_license_state: p.driversLicenseState || null,
+        // Employment Desired
+        position: e.position || null,
+        start_date: e.startDate || null,
+        desired_pay: e.desiredPay || null,
+        employment_type: e.employmentType || [],
+        preferred_shift: e.preferredShift || [],
+        previously_employed: e.previouslyEmployed || null,
+        previous_dates: e.previousDates || null,
+        // Employment History
+        employers: h.employers || [],
+        convicted: h.convicted || null,
+        convicted_explanation: h.convictedExplanation || null,
+        excluded_medicaid: h.excludedMedicaid || null,
+        excluded_explanation: h.excludedExplanation || null,
+        disciplined: h.disciplined || null,
+        disciplined_explanation: h.disciplinedExplanation || null,
+        // Education, Licenses, Skills, References, Agreements
+        education: store.education || [],
+        licenses: store.licenses || [],
+        skills_assessment: store.skillsAssessment || {},
+        references_data: store.references || [],
+        agreements: store.agreements || {},
+      }).select().single();
+
+      if (appError) throw appError;
+
+      const applicationId = appData.id;
+
+      // Upload documents to Supabase Storage and insert records
+      const docFiles = store.documentFiles || {};
+      for (const [docType, file] of Object.entries(docFiles)) {
+        if (!file || !(file instanceof File)) continue;
+        const filePath = `${applicationId}/${docType}_${file.name}`;
+        const { error: uploadError } = await supabase.storage
+          .from('documents')
+          .upload(filePath, file, { upsert: true });
+
+        if (uploadError) {
+          console.error(`Error uploading ${docType}:`, uploadError);
+          continue; // Don't fail the whole submission for one doc
+        }
+
+        // Insert document record
+        await supabase.from('documents').insert({
+          application_id: applicationId,
+          doc_type: docType,
+          file_name: file.name,
+          file_path: filePath,
+          file_size: file.size,
+          mime_type: file.type,
+        });
+      }
+
+      setRefNumber(generatedRef);
+      setSubmitting(false);
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Application submission error:', err);
+      toast.error('Something went wrong submitting your application. Please try again.');
+      setSubmitting(false);
+    }
   };
 
-  if (submitted) return <SubmissionSuccess name={p.firstName} email={p.email} />;
+  if (submitted) return <SubmissionSuccess name={p.firstName} email={p.email} refNumber={refNumber} />;
 
   return (
     <div className="max-w-3xl mx-auto">
@@ -69,10 +161,13 @@ export default function Step9_Review() {
           <Field label="Name" value={`${p.firstName} ${p.middleName} ${p.lastName}`} />
           {p.preferredName && <Field label="Preferred Name" value={p.preferredName} />}
           <Field label="Date of Birth" value={p.dob} />
+          {p.ssnLast4 && <Field label="SSN (last 4)" value={`***-**-${p.ssnLast4}`} />}
+          {p.formerNames && <Field label="Former Names" value={p.formerNames} />}
           <Field label="Address" value={`${p.street}, ${p.city}, ${p.state} ${p.zip}`} />
           <Field label="Gender" value={p.gender} />
           <Field label="Cell Phone" value={p.cellPhone} />
           <Field label="Email" value={p.email} />
+          {p.driversLicenseNumber && <Field label="Driver's License" value={`${p.driversLicenseNumber} (${p.driversLicenseState || 'N/A'})`} />}
         </Section>
 
         <Section title="Employment Desired" step={2}>
