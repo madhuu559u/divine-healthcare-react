@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@import "./styles/themes.css";
+
+@theme {
+  --font-heading: 'Lora', serif;
+  --font-body: 'Inter', sans-serif;
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-text-main: var(--text-main);
+  --color-text-light: var(--text-light-color);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    background-color: var(--bg);
+    margin: 0;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+}
+
+/* Decorative blobs */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.4s ease;
+}
+.blob-1 { width: 400px; height: 400px; top: -100px; right: -100px; background: var(--primary); animation: blobFloat 20s infinite alternate; }
+.blob-2 { width: 300px; height: 300px; bottom: 20%; left: -80px; background: var(--accent); animation: blobFloat 25s infinite alternate-reverse; }
+
+@keyframes blobFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.05); }
+  100% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-alt); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
+
+/* Form styles */
+input, textarea, select {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent) !important;
+  outline: none;
+}
+
+/* Preloader */
+.preloader {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg);
+  transition: opacity 0.5s ease;
+}
+.preloader.hidden { opacity: 0; pointer-events: none; }
+.preloader-spinner {
+  width: 48px; height: 48px;
+  border: 4px solid var(--bg-alt);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

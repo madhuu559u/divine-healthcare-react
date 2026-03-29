@@ -1,0 +1,71 @@
+/* Theme 1: Warm Sage & Blush (Default) */
+:root,
+body.theme-1 {
+  --primary: #7c9a82;
+  --primary-light: #a3bda8;
+  --primary-dark: #5a7860;
+  --accent: #e8c4b8;
+  --accent-light: #f4ddd4;
+  --bg: #fdfbf9;
+  --bg-alt: #f4ede8;
+  --text-main: #3d3d3d;
+  --text-light-color: #7a7a7a;
+  --white: #ffffff;
+  --hero-overlay: rgba(61, 61, 61, 0.55);
+}
+
+/* Theme 2: Soft Lavender & Cream */
+body.theme-2 {
+  --primary: #9b8ec4;
+  --primary-light: #b8aed6;
+  --primary-dark: #7b6ea8;
+  --accent: #e8d5b7;
+  --accent-light: #f2e6d4;
+  --bg: #faf8ff;
+  --bg-alt: #f5f0ff;
+  --text-main: #3d3d3d;
+  --text-light-color: #7a7a7a;
+  --hero-overlay: rgba(60, 50, 80, 0.55);
+}
+
+/* Theme 3: Sky & Sand */
+body.theme-3 {
+  --primary: #7fb3d3;
+  --primary-light: #a6cce2;
+  --primary-dark: #5a94b8;
+  --accent: #d4a574;
+  --accent-light: #e6c4a0;
+  --bg: #f8fbfd;
+  --bg-alt: #f0f4f8;
+  --text-main: #3d3d3d;
+  --text-light-color: #7a7a7a;
+  --hero-overlay: rgba(40, 60, 80, 0.55);
+}
+
+/* Theme 4: Moss & Linen */
+body.theme-4 {
+  --primary: #6b8e6b;
+  --primary-light: #94b394;
+  --primary-dark: #4f6f4f;
+  --accent: #c4a882;
+  --accent-light: #dcc5a8;
+  --bg: #faf9f6;
+  --bg-alt: #f5f1eb;
+  --text-main: #3d3d3d;
+  --text-light-color: #7a7a7a;
+  --hero-overlay: rgba(50, 60, 50, 0.55);
+}
+
+/* Theme 5: Dusk & Rose */
+body.theme-5 {
+  --primary: #8b7b8b;
+  --primary-light: #b0a3b0;
+  --primary-dark: #6b5d6b;
+  --accent: #d4a0a0;
+  --accent-light: #e6c0c0;
+  --bg: #fcfafa;
+  --bg-alt: #faf0f0;
+  --text-main: #3d3d3d;
+  --text-light-color: #7a7a7a;
+  --hero-overlay: rgba(70, 50, 60, 0.55);
+}
