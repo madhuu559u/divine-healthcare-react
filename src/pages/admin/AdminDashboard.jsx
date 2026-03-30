@@ -311,11 +311,12 @@ export default function AdminDashboard() {
                     <th style={s.th}>Position</th>
                     <th style={s.th}>Date</th>
                     <th style={s.th}>Status</th>
+                    <th style={s.th}></th>
                   </tr>
                 </thead>
                 <tbody>
                   {recentApps.map((app) => (
-                    <tr key={app.id} style={s.tr}>
+                    <tr key={app.id} style={{ ...s.tr, cursor: 'pointer' }} onClick={() => navigate('/admin/applications')}>
                       <td style={s.td}>
                         <span style={{ fontFamily: 'monospace', fontSize: 13, color: 'var(--primary-dark)' }}>
                           {app.reference_number || '-'}
@@ -328,6 +329,11 @@ export default function AdminDashboard() {
                       <td style={s.td}>{formatDate(app.created_at)}</td>
                       <td style={s.td}>
                         <StatusBadge status={app.status} />
+                      </td>
+                      <td style={s.td}>
+                        <button onClick={(e) => { e.stopPropagation(); navigate('/admin/applications'); }} style={{ background: 'var(--primary)', color: 'white', border: 'none', padding: '4px 12px', borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                          <Eye size={12} /> View
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -368,11 +374,12 @@ export default function AdminDashboard() {
                     <th style={s.th}>Service</th>
                     <th style={s.th}>Urgency</th>
                     <th style={s.th}>Status</th>
+                    <th style={s.th}></th>
                   </tr>
                 </thead>
                 <tbody>
                   {recentReferrals.map((ref) => (
-                    <tr key={ref.id} style={s.tr}>
+                    <tr key={ref.id} style={{ ...s.tr, cursor: 'pointer' }} onClick={() => navigate('/admin/referrals')}>
                       <td style={s.td}>{ref.referrer_name || '-'}</td>
                       <td style={s.td}>{ref.patient_name || '-'}</td>
                       <td style={s.td}>{ref.service_requested || '-'}</td>
@@ -403,6 +410,11 @@ export default function AdminDashboard() {
                       </td>
                       <td style={s.td}>
                         <StatusBadge status={ref.status} />
+                      </td>
+                      <td style={s.td}>
+                        <button onClick={(e) => { e.stopPropagation(); navigate('/admin/referrals'); }} style={{ background: 'var(--primary)', color: 'white', border: 'none', padding: '4px 12px', borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                          <Eye size={12} /> View
+                        </button>
                       </td>
                     </tr>
                   ))}
