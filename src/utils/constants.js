@@ -34,6 +34,7 @@ export const NAV_LINKS = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
   { label: "Medicaid", path: "/medicaid" },
+  { label: "Referrals", path: "/referrals" },
   { label: "Careers", path: "/careers" },
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
