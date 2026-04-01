@@ -31,6 +31,7 @@ import {
 import toast from 'react-hot-toast';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../lib/AuthContext';
+import { generateApplicationPDF } from '../../utils/generateApplicationPDF';
 
 /* ================================================================== */
 /*  Constants                                                          */
@@ -472,6 +473,9 @@ function ApplicationDetail({ application, documents, onBack, onUpdate }) {
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           <button onClick={handlePrint} style={s.outlineBtn} title="Print application">
             <Printer size={15} /> Print
+          </button>
+          <button onClick={() => { try { generateApplicationPDF(application, documents); toast.success('PDF downloaded'); } catch(e) { console.error(e); toast.error('PDF generation failed'); } }} style={{ ...s.outlineBtn, background: 'var(--primary)', color: 'white', borderColor: 'var(--primary)' }} title="Export as PDF">
+            <FileText size={15} /> Export PDF
           </button>
           {documents.length > 0 && (
             <button onClick={handleDownloadAll} style={s.outlineBtn} title="Download all documents">

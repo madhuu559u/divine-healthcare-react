@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divine Healthcare Services — Complete Technical Documentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#7c9a82;--primary-dark:#5a7860;--primary-light:#a3bda8;--accent:#e8c4b8;--bg:#fdfbf9;--bg-alt:#f4ede8;--text:#3d3d3d;--text-light:#7a7a7a;--white:#fff;--code-bg:#f8f5f0;--border:#e5e0db;--red:#dc3545;--green:#28a745;--blue:#0d6efd;--orange:#fd7e14}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.7;font-size:15px}
+h1,h2,h3,h4{font-family:'Lora',serif;color:var(--primary-dark)}
+h1{font-size:2.2em;margin-bottom:10px}h2{font-size:1.6em;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--accent)}h3{font-size:1.25em;margin:28px 0 12px;color:var(--text)}h4{font-size:1.05em;margin:20px 0 8px;color:var(--text)}
+a{color:var(--primary-dark);text-decoration:none}a:hover{text-decoration:underline}
+code{font-family:'JetBrains Mono',monospace;font-size:0.88em;background:var(--code-bg);padding:2px 6px;border-radius:4px;color:var(--primary-dark)}
+pre{background:#1e1e2e;color:#cdd6f4;padding:20px;border-radius:12px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;margin:16px 0}
+pre .kw{color:#cba6f7}pre .str{color:#a6e3a1}pre .cm{color:#6c7086}pre .fn{color:#89b4fa}pre .num{color:#fab387}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{background:var(--primary);color:white;padding:10px 14px;text-align:left;font-weight:600;font-size:13px}
+td{padding:10px 14px;border-bottom:1px solid var(--border)}
+tr:nth-child(even){background:var(--bg-alt)}
+tr:hover{background:rgba(124,154,130,0.08)}
+.container{max-width:1100px;margin:0 auto;padding:20px 30px 60px}
+/* Tab nav */
+.tab-nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:2px solid var(--accent);padding:0;display:flex;flex-wrap:wrap;gap:0;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.tab-nav a{padding:12px 18px;font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;border-bottom:3px solid transparent;transition:all 0.2s}
+.tab-nav a:hover,.tab-nav a.active{color:var(--primary-dark);border-bottom-color:var(--primary);background:rgba(124,154,130,0.05)}
+/* Cards */
+.card{background:var(--white);border-radius:14px;padding:24px;margin:16px 0;box-shadow:0 2px 12px rgba(0,0,0,0.04);border:1px solid var(--border)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+/* Badges */
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase}
+.badge-green{background:#dcfce7;color:#16a34a}.badge-blue{background:#dbeafe;color:#2563eb}.badge-orange{background:#fef3c7;color:#b45309}.badge-red{background:#fee2e2;color:#dc2626}.badge-gray{background:#f3f4f6;color:#6b7280}
+/* Diagram boxes */
+.diagram{background:var(--white);border:2px solid var(--border);border-radius:14px;padding:30px;margin:20px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;overflow-x:auto;white-space:pre}
+/* Alert boxes */
+.alert{padding:16px 20px;border-radius:10px;margin:16px 0;font-size:14px;display:flex;gap:10px;align-items:flex-start}
+.alert-info{background:#dbeafe;border-left:4px solid #2563eb;color:#1e40af}
+.alert-warn{background:#fef3c7;border-left:4px solid #f59e0b;color:#92400e}
+.alert-success{background:#dcfce7;border-left:4px solid #16a34a;color:#166534}
+.alert-danger{background:#fee2e2;border-left:4px solid #dc2626;color:#991b1b}
+/* Flow steps */
+.flow{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0;align-items:center}
+.flow-step{background:var(--primary);color:white;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600}
+.flow-arrow{color:var(--primary);font-size:20px;font-weight:bold}
+/* Collapsible */
+details{margin:12px 0}
+details summary{cursor:pointer;font-weight:600;padding:10px 16px;background:var(--bg-alt);border-radius:8px;list-style:none;display:flex;align-items:center;gap:8px}
+details summary::before{content:'▶';font-size:11px;transition:transform 0.2s}
+details[open] summary::before{transform:rotate(90deg)}
+details>div{padding:16px;border-left:3px solid var(--accent);margin-left:8px}
+/* Print */
+@media print{.tab-nav{display:none!important}pre{white-space:pre-wrap}body{font-size:12px}.container{padding:10px}}
+@media(max-width:768px){.tab-nav a{padding:8px 12px;font-size:12px}.container{padding:15px}.card-grid{grid-template-columns:1fr}}
+/* Section targets for scroll */
+section{scroll-margin-top:60px}
+.toc-list{columns:2;column-gap:40px}
+.toc-list li{padding:4px 0;font-size:14px}
+.hero-banner{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:white;padding:50px 40px;border-radius:20px;margin:20px 0 30px}
+.hero-banner h1{color:white;font-size:2.5em}
+.hero-banner p{opacity:0.9;font-size:16px;max-width:700px}
+.stat-row{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}
+.stat-box{flex:1;min-width:140px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat-box .num{font-size:28px;font-weight:700;color:var(--primary-dark);font-family:'Lora',serif}
+.stat-box .lbl{font-size:12px;color:var(--text-light);margin-top:4px}
+</style>
+</head>
+<body>
+
+<nav class="tab-nav">
+<a href="#overview">Overview</a>
+<a href="#architecture">Architecture</a>
+<a href="#techstack">Tech Stack</a>
+<a href="#database">Database</a>
+<a href="#admin">Admin Guide</a>
+<a href="#config">Configuration</a>
+<a href="#deployment">Deployment</a>
+<a href="#maintenance">Maintenance</a>
+<a href="#customization">Customization</a>
+</nav>
+
+<div class="container">
+
+<!-- ============================== OVERVIEW ============================== -->
+<section id="overview">
+<div class="hero-banner">
+<h1>Divine Healthcare Services LLC</h1>
+<p>Complete Technical Documentation — Web Application, Admin Panel, Supabase Backend, and Azure Deployment</p>
+<p style="margin-top:10px;font-size:13px;opacity:0.7">Version 2.0 &bull; Generated March 2026 &bull; React + Supabase + Azure</p>
+</div>
+
+<div class="stat-row">
+<div class="stat-box"><div class="num">8</div><div class="lbl">Public Pages</div></div>
+<div class="stat-box"><div class="num">6</div><div class="lbl">Admin Sections</div></div>
+<div class="stat-box"><div class="num">9</div><div class="lbl">Application Steps</div></div>
+<div class="stat-box"><div class="num">5</div><div class="lbl">Database Tables</div></div>
+<div class="stat-box"><div class="num">5</div><div class="lbl">Color Themes</div></div>
+</div>
+
+<h2>Live URLs</h2>
+<table>
+<tr><th>Resource</th><th>URL</th></tr>
+<tr><td>Public Website</td><td><a href="https://victorious-meadow-042d2110f.6.azurestaticapps.net/">https://victorious-meadow-042d2110f.6.azurestaticapps.net/</a></td></tr>
+<tr><td>Admin Panel</td><td><a href="https://victorious-meadow-042d2110f.6.azurestaticapps.net/admin/login">https://victorious-meadow-042d2110f.6.azurestaticapps.net/admin/login</a></td></tr>
+<tr><td>GitHub Repository</td><td><a href="https://github.com/madhuu559u/divine-healthcare-react">https://github.com/madhuu559u/divine-healthcare-react</a></td></tr>
+<tr><td>Supabase Dashboard</td><td><a href="https://supabase.com/dashboard/project/uivawgptglejclpxhyno">https://supabase.com/dashboard/project/uivawgptglejclpxhyno</a></td></tr>
+<tr><td>Azure Resource Group</td><td>divine-healthcare-rg (East US 2)</td></tr>
+</table>
+
+<h2>Public Pages</h2>
+<table>
+<tr><th>Page</th><th>Route</th><th>Purpose</th></tr>
+<tr><td>Home</td><td><code>/</code></td><td>Hero, services preview, testimonials, trust indicators, CTA</td></tr>
+<tr><td>Services</td><td><code>/services</code></td><td>Detailed service offerings with Medicaid callout</td></tr>
+<tr><td>Medicaid</td><td><code>/medicaid</code></td><td>Eligibility, waiver programs (CCC Plus, EDCD, Tech), EVV, FAQ</td></tr>
+<tr><td>Referrals</td><td><code>/referrals</code></td><td>Referral form for hospitals, physicians, families</td></tr>
+<tr><td>Careers</td><td><code>/careers</code></td><td>Job listings from DB, benefits, application requirements</td></tr>
+<tr><td>Job Application</td><td><code>/careers/apply</code></td><td>9-step application wizard (full-screen)</td></tr>
+<tr><td>About</td><td><code>/about</code></td><td>Company story, mission, values, team</td></tr>
+<tr><td>Contact</td><td><code>/contact</code></td><td>Contact form, office info, coverage areas</td></tr>
+</table>
+
+<h2>User Roles</h2>
+<table>
+<tr><th>Role</th><th>Access</th><th>Actions</th></tr>
+<tr><td><span class="badge badge-gray">Visitor</span></td><td>All public pages</td><td>Browse services, read info, submit contact form</td></tr>
+<tr><td><span class="badge badge-blue">Applicant</span></td><td>Careers + Application</td><td>Browse jobs, apply with 9-step wizard, upload documents</td></tr>
+<tr><td><span class="badge badge-orange">Referrer</span></td><td>Referrals page</td><td>Submit patient/client referral (hospitals, doctors, families)</td></tr>
+<tr><td><span class="badge badge-green">Admin</span></td><td>/admin/* (login required)</td><td>Manage jobs, review applications, manage referrals, read messages, settings</td></tr>
+</table>
+
+<h2>Company Information</h2>
+<div class="card">
+<strong>Divine Healthcare Services LLC</strong><br>
+15320 Wits End Drive, Woodbridge, Virginia 22193<br>
+Phone: <a href="tel:703-763-1749">703-763-1749</a> &bull; Fax: 703-763-1763<br>
+Email: <a href="mailto:info@divinehealthcareservices.com">info@divinehealthcareservices.com</a><br>
+Hours: Mon-Fri 8AM-6PM, Sat 9AM-1PM, 24/7 Emergency Support<br>
+EIN: 87-4733894 &bull; Founded: 2014
+</div>
+</section>
+
+<!-- ============================== ARCHITECTURE ============================== -->
+<section id="architecture">
+<h2>Architecture</h2>
+
+<h3>System Overview</h3>
+<div class="diagram">
+┌─────────────────────────────────────────────────────────────┐
+│                        BROWSER                               │
+│  ┌──────────────────┐     ┌──────────────────────────────┐  │
+│  │   Public Pages    │     │      Admin Panel (/admin)    │  │
+│  │  Home, Services,  │     │  Dashboard, Jobs, Apps,      │  │
+│  │  Careers, About,  │     │  Referrals, Messages,        │  │
+│  │  Contact, Medicaid│     │  Settings                    │  │
+│  │  Referrals, Apply │     │  (Protected by Supabase Auth)│  │
+│  └────────┬─────────┘     └─────────────┬────────────────┘  │
+│           │                              │                    │
+└───────────┼──────────────────────────────┼────────────────────┘
+            │                              │
+            ▼                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│              AZURE STATIC WEB APPS                           │
+│              (React SPA + SPA Routing Fallback)              │
+│              CI/CD via GitHub Actions                         │
+└──────────────────────────┬──────────────────────────────────┘
+                           │ HTTPS API Calls
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      SUPABASE                                │
+│  ┌───────────┐  ┌──────────────┐  ┌──────────────────────┐ │
+│  │    AUTH    │  │  PostgreSQL   │  │     STORAGE          │ │
+│  │  Login/    │  │  5 Tables     │  │  'documents' Bucket  │ │
+│  │  Sessions  │  │  + RLS        │  │  ID, Resume, Certs   │ │
+│  └───────────┘  └──────────────┘  └──────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘</div>
+
+<h3>Data Flows</h3>
+
+<h4>Job Application Flow</h4>
+<div class="flow">
+<div class="flow-step">Applicant visits /careers</div><span class="flow-arrow">→</span>
+<div class="flow-step">Browses jobs (from DB)</div><span class="flow-arrow">→</span>
+<div class="flow-step">Clicks Apply Now</div><span class="flow-arrow">→</span>
+<div class="flow-step">9-step wizard</div><span class="flow-arrow">→</span>
+<div class="flow-step">Submits → Supabase DB + Storage</div><span class="flow-arrow">→</span>
+<div class="flow-step">Admin reviews in /admin/applications</div>
+</div>
+
+<h4>Referral Flow</h4>
+<div class="flow">
+<div class="flow-step">Hospital/Doctor visits /referrals</div><span class="flow-arrow">→</span>
+<div class="flow-step">Fills referral form</div><span class="flow-arrow">→</span>
+<div class="flow-step">Submits → Supabase DB</div><span class="flow-arrow">→</span>
+<div class="flow-step">Admin reviews in /admin/referrals</div>
+</div>
+
+<h4>Contact Flow</h4>
+<div class="flow">
+<div class="flow-step">Visitor visits /contact</div><span class="flow-arrow">→</span>
+<div class="flow-step">Fills contact form</div><span class="flow-arrow">→</span>
+<div class="flow-step">Submits → Supabase DB</div><span class="flow-arrow">→</span>
+<div class="flow-step">Admin reads in /admin/messages</div>
+</div>
+
+<h4>Job Management Flow</h4>
+<div class="flow">
+<div class="flow-step">Admin logs into /admin</div><span class="flow-arrow">→</span>
+<div class="flow-step">Goes to /admin/jobs</div><span class="flow-arrow">→</span>
+<div class="flow-step">Creates/Edits job → DB</div><span class="flow-arrow">→</span>
+<div class="flow-step">Public /careers page shows it instantly</div>
+</div>
+
+<h3>Project File Structure</h3>
+<pre>
+divine-healthcare-upgraded/
+├── .env                          # Supabase URL + anon key (NOT in git)
+├── .env.example                  # Template for .env
+├── .gitignore
+├── index.html                    # Vite entry HTML
+├── package.json                  # Dependencies
+├── vite.config.js                # Vite + Tailwind config
+├── staticwebapp.config.json      # Azure SPA routing fallback
+├── SETUP.md                      # Quick setup guide
+├── DOCUMENTATION.html            # This file
+├── supabase/
+│   ├── migrations/
+│   │   ├── 001_initial_schema.sql    # Tables, indexes, RLS, seed data
+│   │   └── 002_fix_rls_policies.sql  # Fixed RLS policies
+│   └── run-migration.mjs            # Node script to run SQL
+├── public/
+│   ├── _redirects                # SPA routing fallback
+│   └── images/
+├── src/
+│   ├── main.jsx                  # App entry point
+│   ├── index.css                 # Tailwind + global styles
+│   ├── App.jsx                   # Router + layout + all routes
+│   ├── lib/
+│   │   ├── supabase.js           # Supabase client (reads .env)
+│   │   └── AuthContext.jsx       # Auth provider + useAuth hook
+│   ├── store/
+│   │   ├── useThemeStore.js      # Color theme state (localStorage)
+│   │   └── useApplicationStore.js # 9-step form state (Zustand)
+│   ├── utils/
+│   │   └── constants.js          # Company info, nav links, states
+│   ├── styles/
+│   │   └── themes.css            # 5 color theme definitions
+│   ├── data/
+│   │   ├── jobs.js               # Fallback job data (if DB fails)
+│   │   ├── services.js           # Service descriptions
+│   │   ├── testimonials.js       # Testimonial content
+│   │   └── coverageAreas.js      # Virginia coverage areas
+│   ├── components/
+│   │   ├── shared/               # Button, Card, Modal, AnimatedSection, SectionHeader
+│   │   ├── layout/               # TopBar, Navbar, Footer, WhatsApp, ThemeSwitcher, ScrollToTop
+│   │   ├── home/                 # Hero, TrustBar, AboutPreview, ServicesPreview, HowItWorks, Testimonials, CoverageAreas, CTASection
+│   │   ├── services/             # ServicesHero, ServiceDetail, ServicesCTA
+│   │   ├── about/                # AboutHero, Story, Values, Team
+│   │   ├── contact/              # ContactHero, ContactForm, ContactInfo
+│   │   ├── careers/              # CareersHero, WhyWorkHere, JobListings, JobCard, JobDetailModal, BenefitsSection
+│   │   │   └── ApplicationForm/  # ApplicationWizard, StepIndicator, Step1-9, SubmissionSuccess
+│   │   ├── medicaid/             # MedicaidHero, EligibilityInfo, WaiverPrograms, EVVSection
+│   │   ├── referrals/            # ReferralHero, ReferralForm
+│   │   └── admin/                # AdminLayout, ProtectedRoute
+│   └── pages/
+│       ├── HomePage.jsx          # Composes home components
+│       ├── ServicesPage.jsx
+│       ├── AboutPage.jsx
+│       ├── ContactPage.jsx
+│       ├── CareersPage.jsx
+│       ├── JobApplicationPage.jsx
+│       ├── MedicaidPage.jsx
+│       ├── ReferralsPage.jsx
+│       ├── NotFoundPage.jsx
+│       └── admin/
+│           ├── AdminLogin.jsx
+│           ├── AdminDashboard.jsx
+│           ├── AdminJobs.jsx
+│           ├── AdminApplications.jsx
+│           ├── AdminReferrals.jsx
+│           ├── AdminMessages.jsx
+│           └── AdminSettings.jsx
+</pre>
+</section>
+
+<!-- ============================== TECH STACK ============================== -->
+<section id="techstack">
+<h2>Tech Stack</h2>
+<div class="card-grid">
+<div class="card"><h4>React 19</h4><p>UI framework. Component-based, virtual DOM, hooks.</p><code>react: ^19.2.4</code></div>
+<div class="card"><h4>Vite 8</h4><p>Build tool. Lightning-fast HMR, ESM-native bundling.</p><code>vite: ^8.0.1</code></div>
+<div class="card"><h4>Tailwind CSS 4</h4><p>Utility-first CSS. Used via @tailwindcss/vite plugin. CSS-first config with @theme.</p><code>tailwindcss: ^4.2.2</code></div>
+<div class="card"><h4>React Router 7</h4><p>Client-side routing. Nested routes, NavLink active states, useNavigate.</p><code>react-router-dom: ^7.13.2</code></div>
+<div class="card"><h4>Framer Motion 12</h4><p>Animation library. Page transitions, scroll reveals, hover effects, spring physics.</p><code>framer-motion: ^12.38.0</code></div>
+<div class="card"><h4>Supabase JS 2</h4><p>Backend client. Auth, database queries, file storage — all from browser.</p><code>@supabase/supabase-js: ^2.100.1</code></div>
+<div class="card"><h4>React Hook Form 7</h4><p>Form management. Performant, minimal re-renders, integrates with Zod.</p><code>react-hook-form: ^7.72.0</code></div>
+<div class="card"><h4>Zod 4</h4><p>Schema validation. Type-safe, composable, used with @hookform/resolvers.</p><code>zod: ^4.3.6</code></div>
+<div class="card"><h4>Zustand 5</h4><p>State management. Lightweight store for application wizard + theme state.</p><code>zustand: ^5.0.12</code></div>
+<div class="card"><h4>Lucide React 1</h4><p>Icon library. 1000+ SVG icons, tree-shakeable, replaces Font Awesome.</p><code>lucide-react: ^1.7.0</code></div>
+<div class="card"><h4>React Hot Toast 2</h4><p>Toast notifications. Success/error messages for form submissions.</p><code>react-hot-toast: ^2.6.0</code></div>
+<div class="card"><h4>Azure Static Web Apps</h4><p>Hosting. Free tier, global CDN, GitHub Actions CI/CD, custom domains.</p></div>
+</div>
+
+<h3>Why Supabase?</h3>
+<div class="card">
+<ul>
+<li><strong>No server to manage</strong> — Supabase is a hosted PostgreSQL database with built-in Auth, Storage, and REST API</li>
+<li><strong>Free tier</strong> — 500MB database, 1GB storage, 50,000 monthly active users, unlimited API requests</li>
+<li><strong>Row-Level Security (RLS)</strong> — database-level access control means the frontend can talk directly to the DB safely</li>
+<li><strong>Real-time capable</strong> — can add real-time updates later without architecture changes</li>
+<li><strong>Easy to switch</strong> — just change 2 env vars and re-run the SQL migration</li>
+<li><strong>Auth built-in</strong> — email/password login with session management, no custom auth server needed</li>
+<li><strong>Storage built-in</strong> — file uploads (documents, resumes, IDs) stored securely with signed URLs</li>
+</ul>
+</div>
+</section>
+
+<!-- ============================== DATABASE ============================== -->
+<section id="database">
+<h2>Database</h2>
+
+<h3>Entity Relationship Diagram</h3>
+<div class="diagram">
+┌──────────────┐         ┌────────────────────────┐         ┌──────────────┐
+│    JOBS       │    1:N  │     APPLICATIONS        │    1:N  │  DOCUMENTS    │
+│──────────────│◄────────│────────────────────────│────────►│──────────────│
+│ id (PK)      │         │ id (PK)                │         │ id (PK)      │
+│ title        │         │ job_id (FK) ───────────┘         │ application_id│
+│ full_title   │         │ reference_number (UQ)   │         │ doc_type     │
+│ category     │         │ status                  │         │ file_name    │
+│ description  │         │ first_name, last_name   │         │ storage_path │
+│ requirements │         │ email, phone            │         │ file_size    │
+│ types, shifts│         │ position, education     │         │ mime_type    │
+│ is_active    │         │ licenses, skills        │         │ uploaded_at  │
+│ pay_range    │         │ agreements, employers   │         └──────────────┘
+│ created_at   │         │ admin_notes, status     │
+└──────────────┘         │ created_at              │
+                         └────────────────────────┘
+
+┌──────────────────┐     ┌──────────────────────┐
+│   REFERRALS       │     │ CONTACT_SUBMISSIONS   │
+│──────────────────│     │─────────────────────│
+│ id (PK)          │     │ id (PK)             │
+│ referrer_name    │     │ name, email, phone  │
+│ patient_name     │     │ service, message    │
+│ service_requested│     │ status              │
+│ urgency, status  │     │ admin_notes         │
+│ admin_notes      │     │ created_at          │
+│ created_at       │     └──────────────────────┘
+└──────────────────┘</div>
+
+<h3>Table: <code>jobs</code></h3>
+<p>Admin-managed job listings displayed on the public Careers page.</p>
+<table>
+<tr><th>Column</th><th>Type</th><th>Default</th><th>Purpose</th></tr>
+<tr><td>id</td><td>UUID</td><td>auto</td><td>Primary key</td></tr>
+<tr><td>title</td><td>TEXT NOT NULL</td><td>—</td><td>Short title, e.g. "CNA"</td></tr>
+<tr><td>full_title</td><td>TEXT NOT NULL</td><td>—</td><td>Full title, e.g. "Certified Nursing Assistant"</td></tr>
+<tr><td>category</td><td>TEXT</td><td>'Nursing'</td><td>Nursing, Aide, Licensed Nurse</td></tr>
+<tr><td>description</td><td>TEXT</td><td>—</td><td>Job description paragraph</td></tr>
+<tr><td>requirements</td><td>JSONB</td><td>[]</td><td>Array of requirement strings</td></tr>
+<tr><td>responsibilities</td><td>JSONB</td><td>[]</td><td>Array of responsibility strings</td></tr>
+<tr><td>types</td><td>JSONB</td><td>["Full-Time"]</td><td>Employment types: Full-Time, Part-Time, PRN</td></tr>
+<tr><td>shifts</td><td>JSONB</td><td>["Day"]</td><td>Available shifts: Day, Evening, Night</td></tr>
+<tr><td>pay_range</td><td>TEXT</td><td>—</td><td>Pay range text, e.g. "$18-22/hr"</td></tr>
+<tr><td>location</td><td>TEXT</td><td>'Woodbridge, VA'</td><td>Job location</td></tr>
+<tr><td>is_active</td><td>BOOLEAN</td><td>true</td><td>Whether shown on public site</td></tr>
+<tr><td>created_at</td><td>TIMESTAMPTZ</td><td>NOW()</td><td>Creation timestamp</td></tr>
+<tr><td>updated_at</td><td>TIMESTAMPTZ</td><td>NOW()</td><td>Auto-updated on change</td></tr>
+</table>
+
+<h3>Table: <code>applications</code></h3>
+<p>Full 9-step job application data. ~40 columns matching the 25-page PDF form.</p>
+
+<details><summary>Step 1: Personal Information (13 columns)</summary><div>
+<table>
+<tr><th>Column</th><th>Type</th><th>Purpose</th></tr>
+<tr><td>first_name</td><td>TEXT NOT NULL</td><td>Legal first name</td></tr>
+<tr><td>middle_name</td><td>TEXT</td><td>Legal middle name</td></tr>
+<tr><td>last_name</td><td>TEXT NOT NULL</td><td>Legal last name</td></tr>
+<tr><td>preferred_name</td><td>TEXT</td><td>Nickname / preferred name</td></tr>
+<tr><td>ssn_last4</td><td>TEXT</td><td>Last 4 digits of SSN (security)</td></tr>
+<tr><td>date_of_birth</td><td>DATE</td><td>Date of birth</td></tr>
+<tr><td>street, city, state, zip</td><td>TEXT</td><td>Mailing address</td></tr>
+<tr><td>gender</td><td>TEXT</td><td>Male / Female / Prefer not to say</td></tr>
+<tr><td>home_phone, cell_phone</td><td>TEXT</td><td>Phone numbers</td></tr>
+<tr><td>email</td><td>TEXT NOT NULL</td><td>Email address</td></tr>
+<tr><td>is_over_18, is_citizen, is_eligible</td><td>TEXT</td><td>Yes/No eligibility questions</td></tr>
+<tr><td>hear_about_us</td><td>TEXT</td><td>How they found us</td></tr>
+<tr><td>former_names</td><td>TEXT</td><td>Previous names used (background check)</td></tr>
+<tr><td>drivers_license</td><td>TEXT</td><td>Driver's license number</td></tr>
+<tr><td>drivers_license_state</td><td>TEXT</td><td>DL issuing state</td></tr>
+</table>
+</div></details>
+
+<details><summary>Step 2: Employment Desired (7 columns)</summary><div>
+<table>
+<tr><th>Column</th><th>Type</th><th>Purpose</th></tr>
+<tr><td>position</td><td>TEXT</td><td>Position applying for (CNA, RN, etc.)</td></tr>
+<tr><td>start_date</td><td>DATE</td><td>Available start date</td></tr>
+<tr><td>desired_pay</td><td>TEXT</td><td>Desired pay rate</td></tr>
+<tr><td>employment_type</td><td>JSONB</td><td>["Full-Time","Part-Time"]</td></tr>
+<tr><td>preferred_shift</td><td>JSONB</td><td>["Day","Evening"]</td></tr>
+<tr><td>previously_employed</td><td>TEXT</td><td>Yes/No — previously worked here</td></tr>
+<tr><td>previous_dates</td><td>TEXT</td><td>When previously employed</td></tr>
+</table>
+</div></details>
+
+<details><summary>Step 3: Employment History (7 columns)</summary><div>
+<table>
+<tr><th>Column</th><th>Type</th><th>Purpose</th></tr>
+<tr><td>employers</td><td>JSONB</td><td>Array of employer objects (name, title, supervisor, dates, work, reason for leaving)</td></tr>
+<tr><td>convicted</td><td>TEXT</td><td>Yes/No — criminal conviction</td></tr>
+<tr><td>convicted_explanation</td><td>TEXT</td><td>Explanation if convicted</td></tr>
+<tr><td>excluded_medicaid</td><td>TEXT</td><td>Yes/No — Medicare/Medicaid exclusion</td></tr>
+<tr><td>excluded_explanation</td><td>TEXT</td><td>Explanation if excluded</td></tr>
+<tr><td>disciplined</td><td>TEXT</td><td>Yes/No — licensing board discipline</td></tr>
+<tr><td>disciplined_explanation</td><td>TEXT</td><td>Explanation if disciplined</td></tr>
+</table>
+</div></details>
+
+<details><summary>Steps 4-9 + Admin (9 columns)</summary><div>
+<table>
+<tr><th>Column</th><th>Type</th><th>Purpose</th></tr>
+<tr><td>education</td><td>JSONB</td><td>Step 4: Array of {level, schoolName, yearsAttended, state, degreeNumber}</td></tr>
+<tr><td>licenses</td><td>JSONB</td><td>Step 5: Array of {type, state, expirationYear, number}</td></tr>
+<tr><td>skills_assessment</td><td>JSONB</td><td>Step 5: {skillName: "A"/"B"/"C"} self-rating</td></tr>
+<tr><td>references_data</td><td>JSONB</td><td>Step 6: Array of {name, phone, bestTime}</td></tr>
+<tr><td>agreements</td><td>JSONB</td><td>Step 8: {backgroundCheck: true, backgroundSignature: "John Doe", ...}</td></tr>
+<tr><td>direct_deposit</td><td>JSONB</td><td>Bank info (optional)</td></tr>
+<tr><td>admin_notes</td><td>TEXT</td><td>Admin internal notes</td></tr>
+<tr><td>reviewed_by</td><td>TEXT</td><td>Admin email who reviewed</td></tr>
+<tr><td>reference_checks</td><td>JSONB</td><td>Admin-filled reference check results (abilities grid)</td></tr>
+</table>
+</div></details>
+
+<h3>Table: <code>documents</code></h3>
+<table>
+<tr><th>Column</th><th>Type</th><th>Purpose</th></tr>
+<tr><td>id</td><td>UUID</td><td>Primary key</td></tr>
+<tr><td>application_id</td><td>UUID FK</td><td>Links to applications.id (CASCADE delete)</td></tr>
+<tr><td>doc_type</td><td>TEXT</td><td>id, passport, ssn, nursingLicense, cprCert, ppd, voidCheck, headshot, resume, other</td></tr>
+<tr><td>file_name</td><td>TEXT</td><td>Original file name</td></tr>
+<tr><td>file_size</td><td>INTEGER</td><td>File size in bytes</td></tr>
+<tr><td>mime_type</td><td>TEXT</td><td>MIME type (application/pdf, image/jpeg, etc.)</td></tr>
+<tr><td>storage_path</td><td>TEXT</td><td>Path in Supabase Storage: <code>{app_id}/{docType}_{filename}</code></td></tr>
+<tr><td>uploaded_at</td><td>TIMESTAMPTZ</td><td>Upload timestamp</td></tr>
+</table>
+
+<h3>Table: <code>referrals</code></h3>
+<table>
+<tr><th>Column</th><th>Type</th><th>Purpose</th></tr>
+<tr><td>referrer_name, referrer_org, referrer_title</td><td>TEXT</td><td>Who is referring</td></tr>
+<tr><td>referrer_phone, referrer_email, referrer_fax</td><td>TEXT</td><td>Referrer contact info</td></tr>
+<tr><td>patient_name, patient_dob, patient_address, patient_phone</td><td>TEXT/DATE</td><td>Patient info</td></tr>
+<tr><td>insurance_type, medicaid_id</td><td>TEXT</td><td>Insurance details</td></tr>
+<tr><td>service_requested, start_date, urgency</td><td>TEXT/DATE</td><td>Service needs</td></tr>
+<tr><td>status</td><td>TEXT</td><td>new → reviewing → accepted → in_progress → completed (or declined)</td></tr>
+</table>
+
+<h3>Table: <code>contact_submissions</code></h3>
+<table>
+<tr><th>Column</th><th>Type</th><th>Purpose</th></tr>
+<tr><td>name, email, phone</td><td>TEXT</td><td>Contact info</td></tr>
+<tr><td>service</td><td>TEXT</td><td>Service of interest (optional)</td></tr>
+<tr><td>message</td><td>TEXT</td><td>Message body</td></tr>
+<tr><td>status</td><td>TEXT</td><td>new → read → replied → archived</td></tr>
+</table>
+
+<h3>Row-Level Security (RLS) Policies</h3>
+<div class="alert alert-warn">⚠️ RLS is critical for security. It controls who can read/write each table directly at the database level.</div>
+<table>
+<tr><th>Table</th><th>Operation</th><th>Who</th><th>Rule</th></tr>
+<tr><td>jobs</td><td>SELECT</td><td>Anyone (anon)</td><td>Only active jobs (is_active = true)</td></tr>
+<tr><td>jobs</td><td>INSERT/UPDATE/DELETE</td><td>Authenticated (admin)</td><td>Full access</td></tr>
+<tr><td>applications</td><td>INSERT</td><td>Anyone (anon)</td><td>Allowed — applicants submit</td></tr>
+<tr><td>applications</td><td>SELECT/UPDATE/DELETE</td><td>Authenticated (admin)</td><td>Full access to review</td></tr>
+<tr><td>documents</td><td>INSERT</td><td>Anyone (anon)</td><td>Allowed — applicants upload</td></tr>
+<tr><td>documents</td><td>SELECT/UPDATE/DELETE</td><td>Authenticated (admin)</td><td>Full access to view/download</td></tr>
+<tr><td>referrals</td><td>INSERT</td><td>Anyone (anon)</td><td>Allowed — referrers submit</td></tr>
+<tr><td>referrals</td><td>SELECT/UPDATE/DELETE</td><td>Authenticated (admin)</td><td>Full access</td></tr>
+<tr><td>contact_submissions</td><td>INSERT</td><td>Anyone (anon)</td><td>Allowed — visitors submit</td></tr>
+<tr><td>contact_submissions</td><td>SELECT/UPDATE/DELETE</td><td>Authenticated (admin)</td><td>Full access</td></tr>
+</table>
+
+<h3>Storage Policies (documents bucket)</h3>
+<table>
+<tr><th>Operation</th><th>Who</th><th>Rule</th></tr>
+<tr><td>INSERT (upload)</td><td>Anyone</td><td>bucket_id = 'documents'</td></tr>
+<tr><td>SELECT (read/download)</td><td>Anyone</td><td>bucket_id = 'documents'</td></tr>
+<tr><td>UPDATE</td><td>Authenticated</td><td>bucket_id = 'documents'</td></tr>
+<tr><td>DELETE</td><td>Authenticated</td><td>bucket_id = 'documents'</td></tr>
+</table>
+
+<h3>Seed Data: 8 Default Job Positions</h3>
+<table>
+<tr><th>Title</th><th>Full Title</th><th>Category</th><th>Types</th></tr>
+<tr><td>CNA</td><td>Certified Nursing Assistant</td><td>Nursing</td><td>FT, PT, PRN</td></tr>
+<tr><td>GNA</td><td>Geriatric Nursing Assistant</td><td>Nursing</td><td>FT, PT</td></tr>
+<tr><td>CMT</td><td>Certified Medication Technician</td><td>Nursing</td><td>FT, PT, PRN</td></tr>
+<tr><td>HHA</td><td>Home Health Aide</td><td>Aide</td><td>FT, PT</td></tr>
+<tr><td>PCA</td><td>Personal Care Aide</td><td>Aide</td><td>FT, PT, PRN</td></tr>
+<tr><td>LPN</td><td>Licensed Practical Nurse</td><td>Licensed Nurse</td><td>FT, PT</td></tr>
+<tr><td>RN</td><td>Registered Nurse</td><td>Licensed Nurse</td><td>FT, PT, PRN</td></tr>
+<tr><td>NP</td><td>Nurse Practitioner</td><td>Licensed Nurse</td><td>FT</td></tr>
+</table>
+</section>
+
+<!-- ============================== ADMIN GUIDE ============================== -->
+<section id="admin">
+<h2>Admin Guide</h2>
+
+<h3>Logging In</h3>
+<ol>
+<li>Go to <a href="https://victorious-meadow-042d2110f.6.azurestaticapps.net/admin/login">/admin/login</a></li>
+<li>Enter your admin email and password</li>
+<li>You'll be redirected to the Dashboard</li>
+</ol>
+
+<h3>Creating Admin Users</h3>
+<ol>
+<li>Go to <a href="https://supabase.com/dashboard/project/uivawgptglejclpxhyno/auth/users">Supabase → Auth → Users</a></li>
+<li>Click <strong>Add user</strong> → <strong>Create new user</strong></li>
+<li>Enter email + password, toggle <strong>Auto Confirm User</strong> ON</li>
+<li>Click <strong>Create user</strong></li>
+</ol>
+
+<h3>Dashboard (/admin)</h3>
+<p>Shows 5 stat cards: Total Applications, New Applications, Active Jobs, Pending Referrals, Unread Messages. Plus recent applications and referrals tables with View buttons.</p>
+
+<h3>Job Management (/admin/jobs)</h3>
+<table>
+<tr><th>Action</th><th>How</th></tr>
+<tr><td>Post new job</td><td>Click "Post New Job" → fill form → Save</td></tr>
+<tr><td>Edit job</td><td>Click pencil icon on the job row → modify → Save</td></tr>
+<tr><td>Toggle active/inactive</td><td>Click the toggle switch — immediately shows/hides from public site</td></tr>
+<tr><td>Delete job</td><td>Click trash icon → confirm in modal</td></tr>
+</table>
+
+<h3>Application Review (/admin/applications)</h3>
+<h4>Application Status Workflow</h4>
+<div class="flow">
+<div class="flow-step" style="background:var(--blue)">New</div><span class="flow-arrow">→</span>
+<div class="flow-step" style="background:var(--orange)">Reviewing</div><span class="flow-arrow">→</span>
+<div class="flow-step" style="background:#8b5cf6">Interviewed</div><span class="flow-arrow">→</span>
+<div class="flow-step" style="background:#06b6d4">Offered</div><span class="flow-arrow">→</span>
+<div class="flow-step" style="background:var(--green)">Hired</div>
+</div>
+<p>At any point: <span class="badge badge-red">Rejected</span> or <span class="badge badge-gray">Withdrawn</span></p>
+
+<p>When viewing an application, you see all 9 steps in collapsible sections. The admin sidebar lets you: change status, add notes, fill in reference checks (abilities rating grid matching the PDF form), view/download documents, and print the application.</p>
+
+<h3>Referral Management (/admin/referrals)</h3>
+<h4>Referral Status Workflow</h4>
+<div class="flow">
+<div class="flow-step" style="background:var(--blue)">New</div><span class="flow-arrow">→</span>
+<div class="flow-step" style="background:var(--orange)">Reviewing</div><span class="flow-arrow">→</span>
+<div class="flow-step" style="background:var(--green)">Accepted</div><span class="flow-arrow">→</span>
+<div class="flow-step" style="background:#8b5cf6">In Progress</div><span class="flow-arrow">→</span>
+<div class="flow-step" style="background:var(--primary)">Completed</div>
+</div>
+
+<h3>Messages (/admin/messages)</h3>
+<p>Contact form submissions. Status: <span class="badge badge-blue">New</span> → <span class="badge badge-green">Read</span> → <span class="badge badge-orange">Replied</span> → <span class="badge badge-gray">Archived</span>. Auto-marks as "read" when viewed.</p>
+</section>
+
+<!-- ============================== CONFIGURATION ============================== -->
+<section id="config">
+<h2>Configuration</h2>
+
+<h3>Environment Variables</h3>
+<table>
+<tr><th>Variable</th><th>Where to find</th><th>Set in</th></tr>
+<tr><td><code>VITE_SUPABASE_URL</code></td><td>Supabase → Settings → API → Project URL</td><td><code>.env</code> (local) + GitHub Secret</td></tr>
+<tr><td><code>VITE_SUPABASE_ANON_KEY</code></td><td>Supabase → Settings → API Keys → anon/public</td><td><code>.env</code> (local) + GitHub Secret</td></tr>
+</table>
+
+<h3>Setting GitHub Secrets</h3>
+<pre>
+gh secret set VITE_SUPABASE_URL --repo madhuu559u/divine-healthcare-react --body "https://YOUR_PROJECT.supabase.co"
+gh secret set VITE_SUPABASE_ANON_KEY --repo madhuu559u/divine-healthcare-react --body "eyJ...your_key..."
+</pre>
+
+<h3 style="color:var(--red)">Switching to a New Supabase Project — Complete Checklist</h3>
+<div class="alert alert-danger">Follow ALL steps in order. Missing any step will break the application.</div>
+<ol>
+<li><strong>Create new Supabase project</strong> at <a href="https://supabase.com/dashboard">supabase.com/dashboard</a></li>
+<li><strong>Get credentials</strong>: Go to Settings → API Keys. Copy the <strong>Project URL</strong> and <strong>anon/public key</strong></li>
+<li><strong>Update local <code>.env</code></strong>:
+<pre>
+VITE_SUPABASE_URL=https://NEW_PROJECT_ID.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJ...new_key...
+</pre></li>
+<li><strong>Update GitHub secrets</strong> (commands above)</li>
+<li><strong>Run SQL Migration 001</strong>: Go to new project's SQL Editor → paste contents of <code>supabase/migrations/001_initial_schema.sql</code> → Run</li>
+<li><strong>Run SQL Migration 002</strong>: Paste contents of <code>supabase/migrations/002_fix_rls_policies.sql</code> → Run</li>
+<li><strong>Create storage bucket</strong>: Go to Storage → New Bucket → name: <code>documents</code> → Public: ON</li>
+<li><strong>Run storage policies SQL</strong>:
+<pre>
+CREATE POLICY "allow_public_upload" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'documents');
+CREATE POLICY "allow_public_read" ON storage.objects FOR SELECT USING (bucket_id = 'documents');
+CREATE POLICY "allow_admin_delete" ON storage.objects FOR DELETE USING (bucket_id = 'documents' AND auth.role() = 'authenticated');
+CREATE POLICY "allow_admin_update" ON storage.objects FOR UPDATE USING (bucket_id = 'documents' AND auth.role() = 'authenticated');
+</pre></li>
+<li><strong>Create admin user</strong>: Auth → Users → Add User → email/password → Auto Confirm ON</li>
+<li><strong>Redeploy</strong>: <code>git commit --allow-empty -m "switch supabase" && git push</code></li>
+<li><strong>Test</strong>: Submit a test application, check admin panel, verify documents upload</li>
+</ol>
+</section>
+
+<!-- ============================== DEPLOYMENT ============================== -->
+<section id="deployment">
+<h2>Deployment</h2>
+
+<h3>How It Works</h3>
+<div class="flow">
+<div class="flow-step">Push to main branch</div><span class="flow-arrow">→</span>
+<div class="flow-step">GitHub Actions triggers</div><span class="flow-arrow">→</span>
+<div class="flow-step">Vite builds React app</div><span class="flow-arrow">→</span>
+<div class="flow-step">Uploads to Azure SWA</div><span class="flow-arrow">→</span>
+<div class="flow-step">Live in ~1 minute</div>
+</div>
+
+<h3>Useful Commands</h3>
+<pre>
+<span class="cm"># Check deployment status</span>
+gh run list --repo madhuu559u/divine-healthcare-react --limit 3
+
+<span class="cm"># Watch a deployment in real-time</span>
+gh run watch RUN_ID --repo madhuu559u/divine-healthcare-react
+
+<span class="cm"># Trigger a manual redeploy</span>
+git commit --allow-empty -m "trigger deploy" && git push
+
+<span class="cm"># Build locally to test</span>
+npm run build
+
+<span class="cm"># Run dev server locally</span>
+npm run dev
+</pre>
+
+<h3>Azure Resources</h3>
+<table>
+<tr><th>Resource</th><th>Value</th></tr>
+<tr><td>Resource Group</td><td>divine-healthcare-rg</td></tr>
+<tr><td>Static Web App Name</td><td>divine-healthcare-react</td></tr>
+<tr><td>Hostname</td><td>victorious-meadow-042d2110f.6.azurestaticapps.net</td></tr>
+<tr><td>Location</td><td>East US 2</td></tr>
+<tr><td>SKU</td><td>Free</td></tr>
+</table>
+
+<h3>SPA Routing</h3>
+<p><code>staticwebapp.config.json</code> ensures that all routes (like /careers, /admin) are handled by the React app instead of returning 404:</p>
+<pre>{ "navigationFallback": { "rewrite": "/index.html", "exclude": ["/images/*", "/assets/*"] } }</pre>
+</section>
+
+<!-- ============================== MAINTENANCE ============================== -->
+<section id="maintenance">
+<h2>Maintenance</h2>
+
+<h3>Routine Tasks</h3>
+<table>
+<tr><th>Task</th><th>Frequency</th><th>Where</th></tr>
+<tr><td>Review new applications</td><td>Daily</td><td>/admin/applications</td></tr>
+<tr><td>Check new referrals</td><td>Daily</td><td>/admin/referrals</td></tr>
+<tr><td>Read contact messages</td><td>Daily</td><td>/admin/messages</td></tr>
+<tr><td>Update job listings</td><td>As needed</td><td>/admin/jobs</td></tr>
+<tr><td>Check storage usage</td><td>Monthly</td><td>Supabase Dashboard → Storage</td></tr>
+<tr><td>Review database size</td><td>Monthly</td><td>Supabase Dashboard → Settings → Database</td></tr>
+</table>
+
+<h3>Troubleshooting</h3>
+<table>
+<tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+<tr><td>"Row-level security policy" error</td><td>RLS policies missing or wrong</td><td>Re-run 002_fix_rls_policies.sql + storage policies SQL</td></tr>
+<tr><td>Documents not uploading</td><td>Storage bucket missing or no policies</td><td>Create 'documents' bucket + run storage policies SQL</td></tr>
+<tr><td>Admin login not working</td><td>User not created or not confirmed</td><td>Create user in Supabase Auth → Users with Auto Confirm ON</td></tr>
+<tr><td>Jobs not showing on Careers page</td><td>Jobs inactive or DB empty</td><td>Check /admin/jobs — ensure jobs are active. Re-run 001 seed if DB is empty</td></tr>
+<tr><td>Build fails on deploy</td><td>Missing env vars in GitHub secrets</td><td>Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY as GitHub secrets</td></tr>
+<tr><td>404 on page refresh</td><td>SPA routing config missing</td><td>Ensure staticwebapp.config.json exists with navigationFallback</td></tr>
+<tr><td>Settings page shows bucket not found</td><td>Bucket exists but API check uses auth</td><td>Bucket works fine — this is just the check endpoint needing auth</td></tr>
+</table>
+
+<h3>Security Best Practices</h3>
+<ul>
+<li>Never share the <code>service_role</code> key — only use the <code>anon</code> key in frontend code</li>
+<li>Change admin passwords regularly via /admin/settings</li>
+<li>RLS is your security layer — never disable it</li>
+<li>The <code>.env</code> file is in <code>.gitignore</code> — credentials never go to GitHub</li>
+<li>Supabase handles SSL, backups, and database security automatically</li>
+</ul>
+</section>
+
+<!-- ============================== CUSTOMIZATION ============================== -->
+<section id="customization">
+<h2>Customization</h2>
+
+<h3>Adding a New Public Page</h3>
+<ol>
+<li>Create component: <code>src/pages/NewPage.jsx</code></li>
+<li>Add route in <code>src/App.jsx</code>: <code>&lt;Route path="/new-page" element={&lt;NewPage /&gt;} /&gt;</code></li>
+<li>Add to navigation in <code>src/utils/constants.js</code>: <code>{ label: "New Page", path: "/new-page" }</code></li>
+</ol>
+
+<h3>Adding a Field to Job Applications</h3>
+<ol>
+<li><strong>Database</strong>: Run <code>ALTER TABLE applications ADD COLUMN new_field TEXT;</code> in Supabase SQL Editor</li>
+<li><strong>Zustand store</strong>: Add field to <code>src/store/useApplicationStore.js</code> in the appropriate section + reset</li>
+<li><strong>Form step</strong>: Add input to the relevant Step component (e.g. Step1_PersonalInfo.jsx)</li>
+<li><strong>Zod schema</strong>: Add validation in the same Step component's schema</li>
+<li><strong>Step9 submit</strong>: Add field mapping in <code>Step9_Review.jsx</code> handleSubmit</li>
+<li><strong>Step9 review</strong>: Add <code>&lt;Field&gt;</code> display in the review section</li>
+<li><strong>Admin display</strong>: Add field in <code>AdminApplications.jsx</code> detail view</li>
+</ol>
+
+<h3>Changing Color Themes</h3>
+<p>Edit <code>src/styles/themes.css</code>. Each theme defines these CSS variables:</p>
+<pre>
+body.theme-1 {
+  --primary: #7c9a82;    <span class="cm">/* Main brand color */</span>
+  --primary-light: #a3bda8;
+  --primary-dark: #5a7860;
+  --accent: #e8c4b8;     <span class="cm">/* Secondary/warm color */</span>
+  --accent-light: #f4ddd4;
+  --bg: #fdfbf9;         <span class="cm">/* Page background */</span>
+  --bg-alt: #f4ede8;     <span class="cm">/* Alternate background */</span>
+  --text-main: #3d3d3d;
+  --text-light-color: #7a7a7a;
+}
+</pre>
+
+<h3>Changing Company Info</h3>
+<p>Edit <code>src/utils/constants.js</code> — the COMPANY object. All components reference this centrally.</p>
+
+<h3>Adding a New Admin Page</h3>
+<ol>
+<li>Create: <code>src/pages/admin/AdminNewPage.jsx</code></li>
+<li>Import + add route in <code>src/App.jsx</code> inside the admin route group</li>
+<li>Add nav link in <code>src/components/admin/AdminLayout.jsx</code> navLinks array</li>
+</ol>
+
+<h3>Future Enhancement Ideas</h3>
+<ul>
+<li><strong>Email notifications</strong>: Use Supabase Edge Functions + Resend/SendGrid to email admins when new applications arrive</li>
+<li><strong>Applicant portal</strong>: Let applicants log in to check their application status</li>
+<li><strong>Analytics dashboard</strong>: Add charts showing application trends, popular positions</li>
+<li><strong>Multi-language</strong>: Add i18n support for Spanish-speaking applicants</li>
+<li><strong>PDF export</strong>: Generate a PDF of each application for offline review</li>
+</ul>
+</section>
+
+<!-- FOOTER -->
+<div style="margin-top:60px;padding:30px 0;border-top:2px solid var(--accent);text-align:center;color:var(--text-light);font-size:13px">
+<p><strong>Divine Healthcare Services LLC</strong> — Technical Documentation</p>
+<p>Generated March 2026 &bull; Version 2.0 &bull; React + Supabase + Azure</p>
+<p>Repository: <a href="https://github.com/madhuu559u/divine-healthcare-react">github.com/madhuu559u/divine-healthcare-react</a></p>
+</div>
+
+</div><!-- container -->
+
+<script>
+// Smooth scroll for tab nav
+document.querySelectorAll('.tab-nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+// Highlight active tab on scroll
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.tab-nav a');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-80)current=s.id;});
+  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});
+});
+</script>
+</body>
+</html>
