@@ -2,9 +2,10 @@ import Hero from '../components/home/Hero';
 import TrustBar from '../components/home/TrustBar';
 import AboutPreview from '../components/home/AboutPreview';
 import ServicesPreview from '../components/home/ServicesPreview';
+import MedicaidChecker from '../components/home/MedicaidChecker';
 import HowItWorks from '../components/home/HowItWorks';
 import Testimonials from '../components/home/Testimonials';
-import CoverageAreas from '../components/home/CoverageAreas';
+import ServiceAreaMap from '../components/home/ServiceAreaMap';
 import CTASection from '../components/home/CTASection';
 
 export default function HomePage() {
@@ -14,9 +15,10 @@ export default function HomePage() {
       <TrustBar />
       <AboutPreview />
       <ServicesPreview />
+      <MedicaidChecker />
       <HowItWorks />
       <Testimonials />
-      <CoverageAreas />
+      <ServiceAreaMap />
       <CTASection />
     </>
   );

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divine Healthcare Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#74BA36',
+            secondary: '#706E34'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold tracking-tight">Divine Healthcare</h1>
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-sm font-medium hover:text-primary">Services</a>
+        <a href="#" class="text-sm font-medium hover:text-primary">About</a>
+        <a href="#" class="bg-primary text-white px-5 py-2 rounded-2xl shadow hover:bg-secondary transition">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative py-24">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-90"></div>
+    <div class="relative max-w-5xl mx-auto text-center px-6 text-white">
+      <h2 class="text-5xl font-extrabold leading-tight mb-6">Medicaid-Approved Home Care Made Simple</h2>
+      <p class="text-lg mb-8 opacity-90">We help Virginia families get approved for Personal Care and Respite Services fast—without the paperwork stress.</p>
+
+      <div class="bg-white rounded-2xl shadow-xl p-4 flex flex-col sm:flex-row gap-3 justify-center">
+        <input type="text" placeholder="Enter ZIP code" class="flex-1 px-4 py-3 rounded-xl border focus:outline-none text-gray-800">
+        <button class="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-secondary transition">Find Care</button>
+      </div>
+
+      <div class="mt-6 text-sm opacity-90">
+        ✔ Medicaid Accepted &nbsp; ✔ Licensed & Insured &nbsp; ✔ Same-Day Approval
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-12">How It Works</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition">
+          <div class="text-primary text-3xl mb-3">①</div>
+          <h4 class="font-semibold text-lg mb-2">Request Care</h4>
+          <p class="text-sm text-gray-600">Submit a quick form or call our team</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition">
+          <div class="text-primary text-3xl mb-3">②</div>
+          <h4 class="font-semibold text-lg mb-2">Get Approved</h4>
+          <p class="text-sm text-gray-600">We handle DMAS forms and Medicaid approval</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition">
+          <div class="text-primary text-3xl mb-3">③</div>
+          <h4 class="font-semibold text-lg mb-2">Start Care</h4>
+          <p class="text-sm text-gray-600">Care begins quickly in your home</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-20 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-12">Our Services</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl shadow hover:scale-105 transition">
+          <h4 class="font-semibold text-lg mb-2">Personal Care</h4>
+          <p class="text-sm text-gray-600">Bathing, grooming, mobility assistance</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow hover:scale-105 transition">
+          <h4 class="font-semibold text-lg mb-2">Respite Care</h4>
+          <p class="text-sm text-gray-600">Relief for family caregivers</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow hover:scale-105 transition">
+          <h4 class="font-semibold text-lg mb-2">Companion Care</h4>
+          <p class="text-sm text-gray-600">Meals, errands, companionship</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h3 class="text-3xl font-bold mb-10">What Families Say</h3>
+      <div class="bg-white p-8 rounded-3xl shadow-lg">
+        <p class="italic text-gray-600">“They helped my mother get approved and start care within days. The process was smooth and stress-free.”</p>
+        <p class="mt-4 font-semibold">— Client Family</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">
+    <h3 class="text-3xl font-bold mb-4">Need Care Now?</h3>
+    <p class="mb-8">Speak with our team today and start your approval process</p>
+    <div class="flex justify-center gap-4 flex-wrap">
+      <button class="bg-white text-primary px-6 py-3 rounded-2xl font-semibold shadow hover:scale-105 transition">Call Now</button>
+      <button class="border border-white px-6 py-3 rounded-2xl hover:bg-white hover:text-primary transition">Request Assessment</button>
+    </div>
+  </section>
+
+  <!-- Floating Call Button -->
+  <a href="#" class="fixed bottom-6 right-6 bg-primary text-white px-5 py-3 rounded-full shadow-lg hover:bg-secondary transition">
+    📞 Call
+  </a>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="font-semibold">Divine Healthcare Services</p>
+      <p class="text-sm mt-2">Serving Virginia Medicaid Clients</p>
+      <p class="text-xs mt-4 opacity-70">© 2026 All rights reserved</p>
+    </div>
+  </footer>
+
+</body>
+</html>
