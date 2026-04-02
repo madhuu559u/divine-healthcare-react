@@ -7,7 +7,7 @@ export default function CareersHero() {
   return (
     <section className="relative min-h-[60vh] flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1400&q=80" alt="Healthcare team" className="w-full h-full object-cover" />
+        <img src="https://img1.wsimg.com/isteam/stock/10497/:/cr=t:0.15%25,l:0%25,w:100%25,h:99.7%25/rs=w:1920,m" alt="Healthcare team" className="w-full h-full object-cover" />
         <div className="absolute inset-0" style={{ background: 'var(--hero-overlay)' }} />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-white w-full">

@@ -15,7 +15,7 @@ export const services = [
       "Exercise & physical activity support",
       "Personal hygiene maintenance"
     ],
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80"
+    image: "https://img1.wsimg.com/isteam/ip/2b5573a4-2ac2-4b6d-b528-244db817d67f/Home-Solutions_AdobeStock_256636375_4x3.jpg/:/cr=t:16.67%25,l:0%25,w:100%25,h:66.67%25/rs=w:600,h:300,cg:true"
   },
   {
     id: "companionship",
@@ -33,7 +33,7 @@ export const services = [
       "Walking & outdoor activities",
       "Family event accompaniment"
     ],
-    image: "https://images.unsplash.com/photo-1516733968668-dbdce39c0651?w=600&q=80"
+    image: "https://img1.wsimg.com/isteam/ip/2b5573a4-2ac2-4b6d-b528-244db817d67f/Depositphotos_24655255_XL.jpg/:/cr=t:12.51%25,l:0%25,w:100%25,h:74.99%25/rs=w:600,h:300,cg:true"
   },
   {
     id: "medication-reminders",
@@ -51,7 +51,7 @@ export const services = [
       "Family updates on compliance",
       "Pharmacy liaison services"
     ],
-    image: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=600&q=80"
+    image: "https://img1.wsimg.com/isteam/stock/ZzQ8knj/:/rs=w:600,h:300,cg:true,m/cr=w:600,h:300"
   },
   {
     id: "post-hospital",
@@ -69,6 +69,6 @@ export const services = [
       "Vital signs monitoring",
       "24/7 on-call support"
     ],
-    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80"
+    image: "https://img1.wsimg.com/isteam/stock/10497/:/cr=t:0.15%25,l:0%25,w:100%25,h:99.7%25/rs=w:600,m"
   }
 ];

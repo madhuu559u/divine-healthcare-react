@@ -2,9 +2,9 @@ import SectionHeader from '../shared/SectionHeader';
 import AnimatedSection from '../shared/AnimatedSection';
 
 const team = [
-  { title: 'Compassionate Caregivers', desc: 'Our caregivers are the heart of what we do — trained, certified, and deeply committed to client well-being.', image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80' },
-  { title: 'Care Coordinators', desc: 'Our coordinators ensure seamless communication between clients, families, caregivers, and healthcare providers.', image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80' },
-  { title: 'Administrative Team', desc: 'Our admin team handles scheduling, compliance, and operations so our caregivers can focus on what matters.', image: 'https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=400&q=80' },
+  { title: 'Compassionate Caregivers', desc: 'Our caregivers are the heart of what we do — trained, certified, and deeply committed to client well-being.', image: 'https://img1.wsimg.com/isteam/ip/2b5573a4-2ac2-4b6d-b528-244db817d67f/Home-Solutions_AdobeStock_256636375_4x3.jpg/:/cr=t:16.67%25,l:0%25,w:100%25,h:66.67%25/rs=w:400,h:300,cg:true' },
+  { title: 'Care Coordinators', desc: 'Our coordinators ensure seamless communication between clients, families, caregivers, and healthcare providers.', image: 'https://img1.wsimg.com/isteam/ip/2b5573a4-2ac2-4b6d-b528-244db817d67f/Depositphotos_24655255_XL.jpg/:/cr=t:12.51%25,l:0%25,w:100%25,h:74.99%25/rs=w:400,h:300,cg:true' },
+  { title: 'Administrative Team', desc: 'Our admin team handles scheduling, compliance, and operations so our caregivers can focus on what matters.', image: 'https://img1.wsimg.com/isteam/stock/ZzQ8knj/:/rs=w:400,h:300,cg:true,m/cr=w:400,h:300' },
 ];
 
 export default function Team() {

@@ -21,7 +21,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-[85vh] flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img src="https://img1.wsimg.com/isteam/ip/2b5573a4-2ac2-4b6d-b528-244db817d67f/Home-Solutions_AdobeStock_256636375_4x3.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1920,h:900,cg:true"
+        <img src="https://img1.wsimg.com/isteam/stock/10497/:/cr=t:0.15%25,l:0%25,w:100%25,h:99.7%25/rs=w:1920,m"
           alt="Home healthcare services" className="w-full h-full object-cover" />
         <div className="absolute inset-0" style={{ background: 'var(--hero-overlay)' }} />
       </div>

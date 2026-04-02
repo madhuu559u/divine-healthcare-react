@@ -30,7 +30,7 @@ export default function EligibilityInfo() {
           </ul>
         </AnimatedSection>
         <AnimatedSection direction="right">
-          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" alt="Medicaid services" className="rounded-3xl w-full object-cover shadow-lg" style={{ maxHeight: 400 }} loading="lazy" />
+          <img src="https://img1.wsimg.com/isteam/ip/2b5573a4-2ac2-4b6d-b528-244db817d67f/Home-Solutions_AdobeStock_256636375_4x3.jpg/:/cr=t:16.67%25,l:0%25,w:100%25,h:66.67%25/rs=w:600,h:400,cg:true" alt="Medicaid services" className="rounded-3xl w-full object-cover shadow-lg" style={{ maxHeight: 400 }} loading="lazy" />
         </AnimatedSection>
       </div>
     </section>

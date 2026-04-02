@@ -5,7 +5,7 @@ export default function Story() {
     <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <AnimatedSection direction="left">
-          <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&q=80" alt="Our story" className="rounded-3xl w-full object-cover shadow-lg" style={{ maxHeight: 500 }} />
+          <img src="https://img1.wsimg.com/isteam/ip/2b5573a4-2ac2-4b6d-b528-244db817d67f/Depositphotos_24655255_XL.jpg/:/cr=t:12.51%25,l:0%25,w:100%25,h:74.99%25/rs=w:600,h:400,cg:true" alt="Our story" className="rounded-3xl w-full object-cover shadow-lg" style={{ maxHeight: 500 }} />
         </AnimatedSection>
         <AnimatedSection direction="right">
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-4" style={{ background: 'var(--accent-light)', color: 'var(--primary-dark)' }}>Our Story</span>
