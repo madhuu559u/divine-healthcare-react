@@ -41,11 +41,11 @@ export const NAV_LINKS = [
 ];
 
 export const THEME_NAMES = [
-  "Warm Sage & Blush",
-  "Soft Lavender & Cream",
-  "Sky & Sand",
-  "Moss & Linen",
-  "Dusk & Rose"
+  "Teal & Gold",
+  "Forest & Copper",
+  "Navy & Amber",
+  "Burgundy & Cream",
+  "Sage & Blush"
 ];
 
 export const US_STATES = [

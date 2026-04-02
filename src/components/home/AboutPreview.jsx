@@ -8,7 +8,7 @@ export default function AboutPreview() {
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <AnimatedSection direction="left">
           <div className="relative">
-            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
+            <img src="https://img1.wsimg.com/isteam/ip/2b5573a4-2ac2-4b6d-b528-244db817d67f/Depositphotos_24655255_XL.jpg/:/cr=t:12.51%25,l:0%25,w:100%25,h:74.99%25/rs=w:600,h:400,cg:true"
               alt="Our caring team" className="rounded-3xl w-full object-cover shadow-lg" style={{ maxHeight: 480 }} />
             <div className="absolute -bottom-6 -right-6 p-4 rounded-2xl shadow-lg hidden md:block"
               style={{ background: 'var(--white)' }}>

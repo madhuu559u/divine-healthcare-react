@@ -22,12 +22,8 @@ export default function Navbar() {
       style={{ background: scrolled ? 'var(--white)' : 'rgba(255,255,255,0.95)', backdropFilter: 'blur(10px)' }}>
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg transition-colors"
-            style={{ background: 'var(--primary)' }}>D</div>
-          <div>
-            <span className="font-heading text-lg font-bold block leading-tight" style={{ color: 'var(--primary-dark)' }}>Divine</span>
-            <span className="text-xs leading-tight" style={{ color: 'var(--text-light-color)' }}>Healthcare</span>
-          </div>
+          <img src="https://img1.wsimg.com/isteam/ip/2b5573a4-2ac2-4b6d-b528-244db817d67f/FullLogo_Transparent_NoBuffer%20(9).png/:/rs=h:102,cg:true,m/qt=q:95"
+            alt="Divine Healthcare Services" className="h-10 w-auto" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-1">

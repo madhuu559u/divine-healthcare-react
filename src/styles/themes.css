@@ -1,71 +1,71 @@
-/* Theme 1: Warm Sage & Blush (Default) */
+/* Theme 1: Teal & Gold — TRUST Default */
 :root,
 body.theme-1 {
-  --primary: #7c9a82;
-  --primary-light: #a3bda8;
-  --primary-dark: #5a7860;
-  --accent: #e8c4b8;
-  --accent-light: #f4ddd4;
-  --bg: #fdfbf9;
-  --bg-alt: #f4ede8;
-  --text-main: #3d3d3d;
-  --text-light-color: #7a7a7a;
+  --primary: #0D7377;
+  --primary-light: #10948A;
+  --primary-dark: #095456;
+  --accent: #D4A843;
+  --accent-light: #F5ECD4;
+  --bg: #FFF9F0;
+  --bg-alt: #F5F0E8;
+  --text-main: #1C2127;
+  --text-light-color: #6B7280;
   --white: #ffffff;
-  --hero-overlay: rgba(61, 61, 61, 0.55);
+  --hero-overlay: linear-gradient(180deg, rgba(28,33,39,0.82) 0%, rgba(13,115,119,0.65) 60%, rgba(9,84,86,0.9) 100%);
 }
 
-/* Theme 2: Soft Lavender & Cream */
+/* Theme 2: Forest Green & Copper */
 body.theme-2 {
-  --primary: #9b8ec4;
-  --primary-light: #b8aed6;
-  --primary-dark: #7b6ea8;
-  --accent: #e8d5b7;
-  --accent-light: #f2e6d4;
-  --bg: #faf8ff;
-  --bg-alt: #f5f0ff;
-  --text-main: #3d3d3d;
-  --text-light-color: #7a7a7a;
-  --hero-overlay: rgba(60, 50, 80, 0.55);
+  --primary: #2D5A3D;
+  --primary-light: #4A8B5E;
+  --primary-dark: #1E3D2A;
+  --accent: #B87333;
+  --accent-light: #F0DCC8;
+  --bg: #FAFAF7;
+  --bg-alt: #F0EDE6;
+  --text-main: #1C2127;
+  --text-light-color: #6B7280;
+  --hero-overlay: linear-gradient(180deg, rgba(28,33,39,0.82) 0%, rgba(45,90,61,0.65) 60%, rgba(30,61,42,0.9) 100%);
 }
 
-/* Theme 3: Sky & Sand */
+/* Theme 3: Navy Blue & Amber */
 body.theme-3 {
-  --primary: #7fb3d3;
-  --primary-light: #a6cce2;
-  --primary-dark: #5a94b8;
-  --accent: #d4a574;
-  --accent-light: #e6c4a0;
-  --bg: #f8fbfd;
-  --bg-alt: #f0f4f8;
-  --text-main: #3d3d3d;
-  --text-light-color: #7a7a7a;
-  --hero-overlay: rgba(40, 60, 80, 0.55);
+  --primary: #1B3A5C;
+  --primary-light: #2E5F8A;
+  --primary-dark: #112840;
+  --accent: #F59E0B;
+  --accent-light: #FEF3C7;
+  --bg: #F8FAFC;
+  --bg-alt: #EFF4F9;
+  --text-main: #1C2127;
+  --text-light-color: #6B7280;
+  --hero-overlay: linear-gradient(180deg, rgba(28,33,39,0.82) 0%, rgba(27,58,92,0.65) 60%, rgba(17,40,64,0.9) 100%);
 }
 
-/* Theme 4: Moss & Linen */
+/* Theme 4: Burgundy & Cream */
 body.theme-4 {
-  --primary: #6b8e6b;
-  --primary-light: #94b394;
-  --primary-dark: #4f6f4f;
-  --accent: #c4a882;
-  --accent-light: #dcc5a8;
-  --bg: #faf9f6;
-  --bg-alt: #f5f1eb;
-  --text-main: #3d3d3d;
-  --text-light-color: #7a7a7a;
-  --hero-overlay: rgba(50, 60, 50, 0.55);
+  --primary: #722F37;
+  --primary-light: #9B4A53;
+  --primary-dark: #4A1526;
+  --accent: #D4A373;
+  --accent-light: #F5E6D8;
+  --bg: #FDFAF7;
+  --bg-alt: #F5EDE5;
+  --text-main: #1C2127;
+  --text-light-color: #6B7280;
+  --hero-overlay: linear-gradient(180deg, rgba(28,33,39,0.82) 0%, rgba(114,47,55,0.65) 60%, rgba(74,21,38,0.9) 100%);
 }
 
-/* Theme 5: Dusk & Rose */
+/* Theme 5: Sage & Blush */
 body.theme-5 {
-  --primary: #8b7b8b;
-  --primary-light: #b0a3b0;
-  --primary-dark: #6b5d6b;
-  --accent: #d4a0a0;
-  --accent-light: #e6c0c0;
-  --bg: #fcfafa;
-  --bg-alt: #faf0f0;
-  --text-main: #3d3d3d;
-  --text-light-color: #7a7a7a;
-  --hero-overlay: rgba(70, 50, 60, 0.55);
+  --primary: #7C9A82;
+  --primary-light: #A3BDA8;
+  --primary-dark: #5A7860;
+  --accent: #E8C4B8;
+  --accent-light: #F4DDD4;
+  --bg: #FDFBF9;
+  --bg-alt: #F4EDE8;
+  --text-main: #3D3D3D;
+  --text-light-color: #7A7A7A;
+  --hero-overlay: linear-gradient(180deg, rgba(61,61,61,0.78) 0%, rgba(90,120,96,0.60) 60%, rgba(58,78,62,0.88) 100%);
 }

@@ -5,11 +5,11 @@ import useThemeStore from '../../store/useThemeStore';
 import { THEME_NAMES } from '../../utils/constants';
 
 const themeColors = [
-  { primary: '#7c9a82', accent: '#e8c4b8' },
-  { primary: '#9b8ec4', accent: '#e8d5b7' },
-  { primary: '#7fb3d3', accent: '#d4a574' },
-  { primary: '#6b8e6b', accent: '#c4a882' },
-  { primary: '#8b7b8b', accent: '#d4a0a0' },
+  { primary: '#0D7377', accent: '#D4A843' },
+  { primary: '#2D5A3D', accent: '#B87333' },
+  { primary: '#1B3A5C', accent: '#F59E0B' },
+  { primary: '#722F37', accent: '#D4A373' },
+  { primary: '#7C9A82', accent: '#E8C4B8' },
 ];
 
 export default function ThemeSwitcher() {

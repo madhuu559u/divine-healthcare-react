@@ -2,7 +2,7 @@
 @import "./styles/themes.css";
 
 @theme {
-  --font-heading: 'Lora', serif;
+  --font-heading: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);

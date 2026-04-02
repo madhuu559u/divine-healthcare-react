@@ -28,12 +28,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold" style={{ background: 'var(--accent)', color: 'var(--primary-dark)' }}>D</div>
-              <div>
-                <span className="font-heading text-lg font-bold text-white block leading-tight">Divine</span>
-                <span className="text-xs opacity-70 leading-tight">Healthcare Services</span>
-              </div>
+            <div className="mb-4">
+              <img src="https://img1.wsimg.com/isteam/ip/2b5573a4-2ac2-4b6d-b528-244db817d67f/FullLogo_Transparent_NoBuffer%20(9).png/:/rs=h:102,cg:true,m/qt=q:95"
+                alt="Divine Healthcare Services" className="h-12 w-auto brightness-0 invert" />
             </div>
             <p className="text-sm opacity-80 mb-6 leading-relaxed">{COMPANY.tagline}</p>
             <div className="flex gap-3">
